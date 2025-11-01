@@ -66,7 +66,7 @@ export default function Hero() {
               </div>
 
               {/* Static trusted-by row under hero */}
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+              {/* <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
                 <Badge className="bg-amber-300 text-foreground">
                   They have trusted us
                 </Badge>
@@ -84,7 +84,7 @@ export default function Hero() {
                   stroke="#000"
                   strokeWidth={3}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
 
