@@ -1,10 +1,11 @@
 import { Button } from "@/components/retroui/Button";
 import Hero from "@/components/Hero";
+import TrustedByMarquee from "../components/TrustedByMarquee";
 
 export default function Home() {
   return (
     <div
-      className="bg-[#F0E68C]"
+      className="bg-[#d6f3ca]"
       style={{
         backgroundImage: "url('/grid.svg')",
         backgroundRepeat: "repeat",
@@ -29,6 +30,7 @@ export default function Home() {
 
       <main>
         <Hero />
+        <TrustedByMarquee />
       </main>
     </div>
   );

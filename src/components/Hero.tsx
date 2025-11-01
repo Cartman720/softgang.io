@@ -7,6 +7,7 @@ import { Button } from "@/components/retroui/Button";
 import Star1 from "@/components/stars/star-1";
 import Star2 from "@/components/stars/star-2";
 import Star3 from "@/components/stars/star-3";
+import { Badge } from "./retroui/Badge";
 
 export default function Hero() {
   return (
@@ -26,7 +27,7 @@ export default function Hero() {
           size={56}
         />
         <Star3
-          className="text-foreground absolute bottom-6 left-1/2 -translate-x-1/2 rotate-45"
+          className="text-foreground absolute bottom-6 left-1/3 -translate-x-1/2 rotate-45"
           stroke="#000"
           strokeWidth={6}
           size={48}
@@ -34,43 +35,60 @@ export default function Hero() {
       </div>
       <div className="px-4 lg:px-8">
         <div className="container mx-auto max-w-8xl py-10 lg:py-16">
-          <div className="bg-white border-2 border-black shadow-xl p-6 sm:p-8 lg:p-12 max-w-4xl">
-            <h1 className="font-head font-bold text-5xl sm:text-6xl lg:text-7xl leading-tight text-black">
-              <span>We are the </span>
-              <span className="align-middle inline-block border-2 rounded-lg border-black bg-primary text-primary-foreground px-3 py-1">
-                Software Gang
-              </span>
-            </h1>
+          <div className="p-6 sm:p-8 lg:p-12 max-w-4xl mx-auto">
+            <div className="max-w-5xl flex flex-col items-center">
+              <h1 className="font-head font-bold text-5xl sm:text-6xl lg:text-7xl leading-tight text-black text-center relative">
+                <span>We are the </span>
+                <span className="align-middle inline-block border-2 rounded-lg border-black bg-primary text-primary-foreground px-3 py-1">
+                  Software Gang
+                </span>
 
-            <p className="mt-6 font-sans text-base lg:text-xl text-black max-w-3xl">
-              We outsource tech talent and build software the smart way to help your company achieve its milestones
-            </p>
+                <Star2
+                  size={64}
+                  className="text-destructive absolute top-0 right-0"
+                  stroke="#000"
+                  strokeWidth={3}
+                />
+              </h1>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-              <Button size="lg" variant="default">Get in touch</Button>
-              <Button size="lg" variant="secondary">
-                See services
-              </Button>
-            </div>
+              <p className="mt-6 font-sans text-base lg:text-xl text-black max-w-3xl">
+                We outsource tech talent and build software the smart way to
+                help your company achieve its milestones
+              </p>
 
-            <div className="mt-10 border-2 border-black bg-white shadow-md">
-              <div className="flex items-center gap-2 border-b-2 border-black px-3 py-2">
-                <Star3 size={18} className="text-foreground" stroke="#000" strokeWidth={3} />
-                <span className="font-head text-xs sm:text-sm tracking-widest uppercase">They have trusted us</span>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <Button size="lg" variant="default">
+                  Get in touch
+                </Button>
+                <Button size="lg" variant="secondary">
+                  See services
+                </Button>
               </div>
-              <div className="relative overflow-hidden">
-                <div className="flex w-max whitespace-nowrap gap-10 px-3 py-3 animate-[marquee_28s_linear_infinite]">
-                  <Image src={BevyLogo} alt="Bevy" className="h-7 sm:h-8 w-auto" />
-                  <Image src={CottonBeeLogo} alt="CottonBee" className="h-7 sm:h-8 w-auto" />
-                  {/* duplicate sequence for seamless marquee */}
-                  <Image src={BevyLogo} alt="Bevy" className="h-7 sm:h-8 w-auto" />
-                  <Image src={CottonBeeLogo} alt="CottonBee" className="h-7 sm:h-8 w-auto" />
+
+              {/* Static trusted-by row under hero */}
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+                <Badge className="bg-amber-300 text-foreground">
+                  They have trusted us
+                </Badge>
+                <div className="flex items-center gap-6">
+                  <Image src={BevyLogo} alt="Bevy" className="h-7 w-auto" />
+                  <Image
+                    src={CottonBeeLogo}
+                    alt="CottonBee"
+                    className="h-7 w-auto"
+                  />
                 </div>
+                <Star2
+                  size={32}
+                  className="text-destructive"
+                  stroke="#000"
+                  strokeWidth={3}
+                />
               </div>
             </div>
           </div>
 
-          <div className="mt-10 sm:mt-16 flex animate-pulse items-center gap-2 text-xs text-black/80 justify-left">
+          <div className="mt-10 sm:mt-16 flex animate-pulse items-center gap-2 text-xs text-black/80 justify-center ">
             <span className="hidden sm:inline">Scroll to explore</span>
             <span className="grid h-6 w-6 place-items-center border-2 border-black bg-white shadow animate-bounce">
               ↓
@@ -81,5 +99,3 @@ export default function Hero() {
     </section>
   );
 }
-
-
