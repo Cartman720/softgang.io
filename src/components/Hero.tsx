@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import BevyLogo from "@/assets/bevy-logo.png";
-import CottonBeeLogo from "@/assets/cottonbee-logo.png";
 import { Button } from "@/components/retroui/Button";
 import Star1 from "@/components/stars/star-1";
 import Star2 from "@/components/stars/star-2";
@@ -11,7 +8,7 @@ import { Badge } from "./retroui/Badge";
 
 export default function Hero() {
   return (
-    <section className="relative border-b-2 border-black">
+    <section className="relative border-b border-black">
       {/* Decorative neo-brutalist stars */}
       <div className="pointer-events-none absolute inset-0 z-1" aria-hidden>
         <Star1
@@ -51,23 +48,23 @@ export default function Hero() {
                 />
               </h1>
 
-              <p className="mt-6 font-sans text-base lg:text-xl text-black max-w-3xl">
-                We outsource tech talent and build software the smart way to
-                help your company achieve its milestones
+              <p className="mt-6 font-sans text-base font-semibold lg:text-xl text-center text-black max-w-3xl">
+                We outsource <Badge variant="surface" className="bg-accent text-base">tech talent</Badge> and build software the smart way to
+                help your company <Badge variant="surface" className="bg-red-300 text-base">achieve its milestones</Badge>
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                <Button size="lg" variant="default">
+              <div className="mt-20 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <Button variant="default">
                   Get in touch
                 </Button>
-                <Button size="lg" variant="secondary">
+                <Button variant="secondary">
                   See services
                 </Button>
               </div>
 
               {/* Static trusted-by row under hero */}
               {/* <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-                <Badge className="bg-amber-300 text-foreground">
+                <Badge variant="solid">
                   They have trusted us
                 </Badge>
                 <div className="flex items-center gap-6">

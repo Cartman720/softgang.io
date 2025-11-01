@@ -15,7 +15,7 @@ export default function TrustedByMarquee() {
   ];
 
   return (
-    <section className="w-full bg-white border-t-2 border-b-2 border-black">
+    <section className="w-full bg-white border-t border-b-2 border-black">
       <div className="py-6 sm:py-8">
         <h2 className="sr-only">Trusted by</h2>
         <Marquee speed={40} pauseOnHover gradient={false} autoFill >
@@ -25,7 +25,7 @@ export default function TrustedByMarquee() {
                 key={idx}
                 src={logo.src}
                 alt={logo.alt}
-                className="block h-10 w-auto grayscale hover:grayscale-0 transition"
+                className="block h-10 w-auto transition"
               />
             ))}
           </div>
