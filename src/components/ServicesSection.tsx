@@ -6,7 +6,6 @@ interface ServiceCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-  bgClassName?: string;
   className?: string;
   iconWrapperClassName?: string;
 }
@@ -15,7 +14,6 @@ function ServiceCard({
   icon,
   title,
   description,
-  bgClassName,
   className,
   iconWrapperClassName,
 }: ServiceCardProps) {
