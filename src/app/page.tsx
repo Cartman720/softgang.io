@@ -1,18 +1,19 @@
 import { Button } from "@/components/retroui/Button";
 import Hero from "@/components/Hero";
-import TrustedByMarquee from "../components/TrustedByMarquee";
+import TrustedByMarquee from "@/components/TrustedByMarquee";
+import ServicesSection from "@/components/ServicesSection";
 
 export default function Home() {
   return (
     <div
-      className="bg-[#d6f3ca]"
+      className="bg-[#d6f3ca] pb-20"
       style={{
         backgroundImage: "url('/grid.svg')",
         backgroundRepeat: "repeat",
       }}
     >
       <header className="py-6">
-        <div className="container max-w-8xl mx-auto flex items-center justify-between ">
+        <div className="container max-w-8xl mx-auto flex items-center justify-between">
           <div className="p-2">
             <div className="font-modak text-5xl p-1">SoftGang</div>
           </div>
@@ -31,6 +32,7 @@ export default function Home() {
       <main>
         <Hero />
         <TrustedByMarquee />
+        <ServicesSection />
       </main>
     </div>
   );

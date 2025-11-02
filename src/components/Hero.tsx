@@ -8,7 +8,7 @@ import { Badge } from "./retroui/Badge";
 
 export default function Hero() {
   return (
-    <section className="relative border-b border-black">
+    <section className="relative border-b border-black flex items-center justify-center">
       {/* Decorative neo-brutalist stars */}
       <div className="pointer-events-none absolute inset-0 z-1" aria-hidden>
         <Star1
