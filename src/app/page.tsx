@@ -2,6 +2,7 @@ import { Button } from "@/components/retroui/Button";
 import Hero from "@/components/Hero";
 import TrustedByMarquee from "@/components/TrustedByMarquee";
 import ServicesSection from "@/components/ServicesSection";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
         <Hero />
         <TrustedByMarquee />
         <ServicesSection />
+        <Testimonials />
       </main>
     </div>
   );
