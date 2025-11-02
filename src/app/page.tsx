@@ -2,6 +2,7 @@ import { Button } from "@/components/retroui/Button";
 import Hero from "@/components/Hero";
 import TrustedByMarquee from "@/components/TrustedByMarquee";
 import ServicesSection from "@/components/ServicesSection";
+import OurServicesSection from "@/components/OurServicesSection";
 import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       style={{
         backgroundImage: "url('/grid.svg')",
         backgroundRepeat: "repeat",
+        backgroundAttachment: "fixed",
       }}
     >
       <header className="py-6">
@@ -34,6 +36,7 @@ export default function Home() {
         <Hero />
         <TrustedByMarquee />
         <ServicesSection />
+        <OurServicesSection />
         <Testimonials />
       </main>
     </div>
