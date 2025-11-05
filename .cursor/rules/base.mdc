@@ -1,0 +1,768 @@
+---
+description: Base rules
+alwaysApply: true
+---
+
+## URGENT Notes
+
+- Read current file contents first before making unnecessary changes
+- When changing existing sections, follow their current structure rather than forcing new guidelines
+- When using Figma MCP get_code and get_image, don't hardcode values, try to make style rules flexible
+
+## Basic Setup
+
+- Use pnpm for package management
+- Use kebab-case for naming files, never camelCase
+- Use groq`` template literals for queries (import { groq } from 'next-sanity')
+
+## CRITICAL: Tailwind Class Management
+
+**MANDATORY for ALL React components with Tailwind classes:**
+
+1. **ALWAYS import cn utility**: `import { cn } from '@/lib/utils'`
+2. **ALWAYS use cn() for className**: Never use string concatenation or template literals for classes
+3. **ALWAYS split classes into multiple lines** for better readability and maintainability
+4. **Group related classes together** (layout, spacing, responsive, etc.)
+5. **Each logical group gets its own line** - don't mix unrelated classes on the same line
+
+### Example Pattern:
+
+```tsx
+// ❌ WRONG - Don't do this
+<div className="flex flex-col gap-4 md:flex-row md:gap-6 xl:flex-col xl:gap-4">
+
+// ❌ WRONG - Don't mix unrelated classes on same line
+<div className={cn(
+  'flex flex-col h-full items-start justify-between',  // Too many different types
+  'py-0 pr-0 pl-4',
+  'relative shrink-0'
+)}>
+
+// ✅ CORRECT - Each logical group on its own line
+<div className={cn(
+  'flex flex-col gap-4',
+  'md:flex-row md:gap-6',
+  'xl:flex-col xl:gap-4'
+)}>
+
+// ✅ CORRECT - Related classes grouped together
+<div className={cn(
+  'flex h-full flex-col items-start justify-between',  // Layout classes together
+  'py-0 pr-0 pl-4',                                    // Spacing classes together
+  'relative shrink-0'                                  // Positioning classes together
+)}>
+```
+
+### Class Grouping Guidelines:
+
+- **Layout classes**: `flex`, `grid`, `block`, `hidden`, `items-*`, `justify-*`, `content-*`
+- **Spacing classes**: `gap-*`, `p-*`, `m-*`, `space-*`, `px-*`, `py-*`, `pl-*`, `pr-*`, `pt-*`, `pb-*`
+- **Size classes**: `w-*`, `h-*`, `max-w-*`, `min-h-*`, `max-h-*`, `min-w-*`
+- **Positioning classes**: `relative`, `absolute`, `fixed`, `sticky`, `inset-*`, `top-*`, `right-*`, `bottom-*`, `left-*`
+- **Visual classes**: `bg-*`, `text-*`, `border-*`, `shadow-*`, `opacity-*`
+- **Display classes**: `block`, `inline`, `inline-block`, `hidden`, `flex`, `grid`
+- **Responsive classes**: Group by breakpoint (`sm:*`, `md:*`, `lg:*`, `xl:*`, `2xl:*`)
+- **State classes**: `hover:*`, `focus:*`, `active:*`, `disabled:*`
+- **Z-index classes**: `z-*`
+- **Overflow classes**: `overflow-*`, `overflow-x-*`, `overflow-y-*`
+
+### Advanced Grouping Examples:
+
+```tsx
+// Complex component with proper grouping
+<div className={cn(
+  'relative overflow-hidden',                    // Positioning + overflow
+  'bg-[var(--background-main)]',                // Background
+  'px-8 pt-[300px] pb-[100px]',                 // Spacing
+  'min-h-[1000px]'                              // Size
+)}>
+
+<button className={cn(
+  'box-border flex h-10 items-center justify-center gap-4',  // Layout + size
+  'relative overflow-clip px-4 py-3',                        // Positioning + spacing
+  'border border-white bg-transparent text-white',           // Visual
+  'hover:bg-white hover:text-black'                          // State
+)}>
+```
+
+## React Component Patterns
+
+### Function Declaration vs Arrow Functions
+
+- **ALWAYS use `function` keyword for React components**, never `const Component = () => {}`
+- **NO React.FC types** - use plain props interfaces instead
+- Example:
+
+  ```tsx
+  interface ButtonProps {
+    children: React.ReactNode;
+    onClick?: () => void;
+  }
+
+  export function Button({ children, onClick }: ButtonProps) {
+    return <button onClick={onClick}>{children}</button>;
+  }
+  ```
+
+### Server vs Client Components
+
+IMPORTANT: Split only if necessary. Most components should be only server components and they don't need to be split into client and server components.
+
+- **Server Components** (default): No 'use client' directive, can fetch data directly
+- **Client Components**: Must have 'use client' directive, for interactivity/state
+- **Component Structure Pattern**:
+  ```
+  component-name/
+  ├── component-name.server.tsx    # Server component (data fetching)
+  ├── component-name.client.tsx    # Client component (interactivity)
+  └── index.ts                     # Re-exports from both files
+  ```
+- **Example**: `header.server.tsx` fetches data, `header.client.tsx` handles UI state, `index.ts` exports both
+
+### Index.ts Export Pattern
+
+- **ALWAYS create index.ts files** to avoid double imports
+- **Structure**: `component-name/component-name.tsx` + `component-name/index.ts`
+- **index.ts content**: `export * from './component-name';`
+- **Import pattern**: `import { Component } from './component-name'` (not from .tsx file)
+
+## Project Architecture
+
+### Frontend (Next.js App Router)
+
+- **Typography System**: Use predefined classes from `src/base/styles/typography.css`
+- **Component Theming**: Use `data-theme` attribute with `theme-` prefixed classes
+- **Z-Index Management**: Use CSS custom properties in `globals.css`
+- **SEO**: Automatic metadata generation with `generateLayoutMetadata()` and `generatePageMetadata()`
+
+### Sanity Studio (Modular Schema)
+
+- **Module Structure**: Domain-driven modules under `modules/`
+- **Schema Organization**:
+  - `modules/[domain]/` - Content types by domain
+  - `base/` - Shared utilities and components
+- **Reusable Section System**: All sections use `createReusableSection()` helper from `@/base/utils`
+- **Per-Domain Structure**: Each domain has sections and section documents for reusability
+- **Export Pattern**: Each module has `index.ts` with schema type arrays and section document arrays
+
+### Environment Management
+
+- **Centralized Scripts**: Use `pnpm add-env [app] [variable]` from root
+- **Vercel Integration**: Apps must be linked to Vercel projects
+- **TypeScript Definitions**: Auto-generated in `env.d.ts` files
+
+## Code Style
+
+### TypeScript
+
+- Use interfaces over types
+- Avoid enums, use maps instead
+- Functional programming patterns
+- Descriptive variable names with auxiliary verbs (isLoading, hasError)
+
+### Styling
+
+- **Tailwind via CSS Modules**: Use `@apply` keyword in CSS files
+- **Mobile-first**: Responsive design approach
+- **Component-level theming**: `data-theme` + `theme-` classes for dynamic theming
+- **CRITICAL**: All Tailwind classes MUST use `cn()` utility with multi-line formatting (see Tailwind Class Management section above)
+
+### Content Wrapper Pattern
+
+**MANDATORY for all section components:**
+
+1. **ALWAYS define section padding**: Add `px-*` classes to the `<section>` element
+2. **ALWAYS use `content-wrapper` class**: Provides max-width and centering
+3. **NEVER add additional classes to `content-wrapper`**: It's a pure utility class
+4. **Wrap inner content in additional div**: Add styling classes to inner container
+
+```tsx
+// ❌ WRONG - Don't add classes to content-wrapper
+<div className={cn('content-wrapper relative z-30', 'flex items-stretch')}>
+
+// ✅ CORRECT - Section padding + content-wrapper pattern
+<section className={cn('px-6 md:px-8', 'pt-12 md:pt-24')}>
+  <div className="content-wrapper">
+    <div className={cn('relative z-30', 'flex items-stretch')}>
+      {/* Your content here */}
+    </div>
+  </div>
+</section>
+```
+
+### Responsive Spacing Pattern
+
+**MANDATORY for consistent horizontal padding across all sections:**
+
+Use the `section-padding-x` utility class defined in `utilities.css` for responsive horizontal padding:
+
+- **Mobile**: 24px (`--spacing-mobile`)
+- **Tablet**: 40px (`--spacing-tablet`)
+- **Desktop**: 106px (`--spacing-desktop`)
+
+**Pattern**: Use the `section-padding-x` utility class
+
+```tsx
+// ✅ CORRECT - Use section-padding-x utility
+<div className={cn('flex flex-col gap-4', 'section-padding-x')}>
+
+// ❌ WRONG - Don't manually add responsive padding
+<div className={cn(
+  'flex flex-col gap-4',
+  'px-mobile md:px-tablet xl:px-desktop'
+)}>
+```
+
+**Utility Definition** (defined in `utilities.css`):
+
+```css
+.section-padding-x {
+  padding-left: var(--spacing-mobile);
+  padding-right: var(--spacing-mobile);
+}
+
+@media (min-width: 768px) {
+  .section-padding-x {
+    padding-left: var(--spacing-tablet);
+    padding-right: var(--spacing-tablet);
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-padding-x {
+    padding-left: var(--spacing-desktop);
+    padding-right: var(--spacing-desktop);
+  }
+}
+```
+
+### Performance
+
+- **Minimize 'use client'**: Favor Server Components
+- **Web Vitals**: Optimize LCP, CLS, FID
+- **Dynamic Imports**: Use for client-only components when needed
+
+## File Naming & Structure
+
+### App Structure
+
+#### Base vs App Separation
+
+- **`src/base/`**: Shared utilities, components, and types used across the entire application
+- **`src/app/`**: Domain-specific components, pages, and data fetching functions
+
+#### App Directory Structure
+
+```
+src/app/
+├── layout.tsx              # Root layout with metadata generation
+├── globals.css             # Global styles and CSS custom properties
+├── actions.ts              # Global data fetching functions
+├── api/                    # API routes
+│   ├── draft-mode/         # Draft mode management
+│   │   ├── disable/route.ts
+│   │   └── enable/route.ts
+│   └── revalidate-all/route.ts
+├── components/             # Shared app components (header, navigation)
+│   ├── header/
+│   │   ├── header.server.tsx
+│   │   ├── header.client.tsx
+│   │   └── index.ts
+│   ├── navigation/
+│   │   ├── navigation.client.tsx
+│   │   ├── navigation-item.tsx
+│   │   └── index.ts
+│   ├── footer.tsx
+│   └── index.ts
+├── [[...slug]]/           # Dynamic catch-all pages
+│   ├── page.tsx
+│   ├── actions.ts         # Page data fetching
+│   ├── components/sections/ # Reusable section components
+│   │   └── [section-name]/
+│   └── sections-registry.tsx
+├── blog/                  # Blog domain
+│   ├── page.tsx
+│   ├── actions.ts         # Blog data fetching
+│   ├── components/        # Blog-specific components
+│   ├── hooks/             # Blog-specific hooks
+│   └── [slug]/
+│       ├── page.tsx
+│       ├── actions.ts     # Blog post data fetching
+│       └── components/    # Blog post components
+```
+
+#### Base Directory Structure
+
+```
+src/base/
+├── components/
+│   ├── [component-name].tsx
+│   ├── [component-name]/
+│   │   ├── [component-name].tsx
+│   │   ├── index.ts
+│   │   └── types.ts
+│   └── index.ts
+├── constants.ts          # Breakpoints and shared constants
+├── hooks/
+│   ├── [hook-name].ts
+│   └── index.ts
+├── lib/
+│   ├── [lib-name]/
+│   │   └── [file-name].tsx
+│   └── sanity/
+│       ├── [sanity-file].ts
+│       └── types.ts
+├── styles/
+│   ├── transitions.css
+│   ├── typography.css
+│   └── utilities.css
+├── types.ts              # Core type definitions (NavigationItem, Header, etc.)
+└── utils.ts              # Core utilities (cn, isExternalLink, MIN_H_VH_MINUS_NAV_DESKTOP)
+```
+
+#### Dynamic Section System
+
+**CRITICAL**: All sections use dynamic imports for code splitting and performance optimization.
+
+### Section Registry Pattern
+
+Each domain has its own `sections-registry.ts` file that maps section types to dynamically imported components:
+
+```typescript
+// sections-registry.ts
+import dynamic from 'next/dynamic';
+
+export const sectionsRegistry = {
+  [sectionType]: dynamic(() =>
+    import('./components/sections/[section-name]').then(
+      (mod) => mod.[SectionName]Section
+    )
+  ),
+  // Mix of dynamic and static imports
+  [staticSectionType]: StaticSection, // For critical above-the-fold sections
+};
+```
+
+### Dynamic Section Rendering
+
+All pages use the `DynamicSection` component to render sections:
+
+```typescript
+// page.tsx
+{data?.sections?.map((section) => (
+  <DynamicSection
+    key={section._key}
+    section={section}
+    sectionsRegistry={sectionsRegistry}
+  />
+))}
+```
+
+### Section Registration Rules
+
+1. **Dynamic imports**: Use `dynamic()` for most sections to enable code splitting
+2. **Static imports**: Only for critical above-the-fold sections (e.g., hero sections)
+3. **Error boundaries**: All sections are wrapped in `SectionErrorBoundary`
+4. **Type safety**: Registry keys must match Sanity schema `_type` values
+
+#### Domain Component Pattern
+
+- **Each domain folder** contains:
+  - `page.tsx` - Server component for the page
+  - `actions.ts` - Data fetching functions specific to that domain
+  - `components/sections/` - Domain-specific section components
+  - `sections-registry.ts` - Section type to component mapping
+  - `types.ts` - Domain-specific TypeScript types
+- **Components/sections in domain folders** should mirror the structure and functionality defined in Sanity Studio schemas
+- **Data fetching** is centralized in `actions.ts` files within each domain
+
+### Base Utilities
+
+```
+src/base/
+├── components/
+│   ├── button.tsx
+│   ├── logo.tsx
+│   └── index.ts
+├── lib/
+│   └── sanity/
+│       ├── client.ts
+│       ├── queries.ts    # All Sanity GROQ queries must be defined here
+│       └── fragments.ts
+├── styles/
+│   ├── typography.css
+│   └── transitions.css
+├── types.ts          # Core type definitions (NavigationItem, Header, etc.)
+└── utils.ts          # Core utilities (cn, isExternalLink)
+```
+
+### Core Base Files
+
+#### `types.ts` - Core Type Definitions
+
+- **NavigationItem**: Union type for different navigation item types (link, grid, cards, etc.)
+- **Header, RibbonItem, Cta, Image, Link**: Core UI component types
+- **SEOFields, SiteSettings**: SEO and site configuration types
+
+#### `utils.ts` - Core Utilities
+
+- **cn()**: Class name utility combining clsx and tailwind-merge
+- **isExternalLink()**: Utility to detect external links
+
+#### `createReusableSection()` - Sanity Studio Helper
+
+- **Purpose**: Creates sections with built-in reusability for all domains
+- **Usage**: Import from `@/base/utils` in all section files
+- **Pattern**: Creates section proxy with `isReusedContent` toggle and references standalone documents
+- **Features**: Conditional field display, smart validation, intelligent previews
+
+##### Implementation Pattern
+
+```typescript
+// 1. Define section fields
+const heroSectionFields = [
+  defineField({
+    name: "title",
+    title: "Title",
+    type: "string",
+  }),
+];
+
+// 2. Create standalone document type
+export const pageHeroDocumentType = defineType({
+  name: "pageHero",
+  title: "Page Hero",
+  type: "document",
+  fields: heroSectionFields,
+});
+
+// 3. Create reusable section proxy
+export const pageHeroSection = createReusableSection({
+  name: "pageHeroSection",
+  title: "Page Hero Section",
+  fields: heroSectionFields,
+  referenceTo: "pageHero",
+});
+```
+
+##### Module Index Structure
+
+```typescript
+// modules/[domain]/index.ts
+export const [domain]SchemaTypes = [
+  [domain]Page,                    // Main page document
+  ...[domain]PageSections,         // Section proxies for use in pages
+  ...[domain]SectionDocuments,     // Standalone reusable section documents
+];
+```
+
+##### Desk Structure Organization
+
+Each domain follows this nested structure:
+
+```
+Domain Name/
+├── [Domain] Pages           # Main page documents
+└── Reusable Sections        # Standalone section documents
+    ├── Domain Hero         # e.g., "Product Hero"
+    └── ...                 # Other domain-specific sections
+```
+
+##### Frontend Integration
+
+Query fragments handle the `isReusedContent` magic keyword:
+
+```typescript
+export const PAGE_HERO_SECTION_FRAGMENT = groq`
+_type == "pageHeroSection" => select(
+  isReusedContent => reusedContent-> {
+    "_type": "pageHeroSection",
+    ${PAGE_HERO_FRAGMENT}
+  },
+  true => {
+    "_type": "pageHeroSection",
+    ${PAGE_HERO_FRAGMENT}
+  }
+)
+`;
+```
+
+The `isReusedContent` field:
+
+- **In Studio**: Controls field visibility and validation
+- **In Queries**: Determines whether to fetch from `reusedContent->` reference or inline fields
+- **In Frontend**: Provides consistent data structure regardless of content source
+
+#### `lib/sanity/fragments.ts` - Sanity Query Fragments
+
+- **Purpose**: Reusable query parts for GROQ queries
+- **Usage**: Import from `@/base/lib/sanity/fragments` in Sanity Studio files
+- **Examples**: IMAGE_FRAGMENT, LINK_FRAGMENT, DESCRIPTION_FRAGMENT, ICON_FRAGMENT, VIDEO_FRAGMENT, MEDIA_FRAGMENT, SEO_FRAGMENT
+- **Page section fragments**: PAGE_HERO_FRAGMENT, PAGE_HERO_SECTION_FRAGMENT
+
+##### Reusable Section Fragment Pattern
+
+**MANDATORY**: Use consistent GROQ template pattern for reusable section fragments to ensure Sanity type generation compatibility.
+
+**Pattern**:
+
+**Complete Example**:
+
+```typescript
+// Base content fragment
+export const PAGE_HERO_FRAGMENT = groq`
+  "title": coalesce(title, ""),
+  "description": coalesce(description, ""),
+  cta {
+    ${CTA_FRAGMENT}
+  },
+`;
+
+// Reusable section fragment
+export const PAGE_HERO_SECTION_FRAGMENT = groq`
+  _type == "pageHeroSection" => select(
+    isReusedContent => reusedContent-> {
+      "_type": "pageHeroSection",
+      ${PAGE_HERO_FRAGMENT}
+    },
+    true => {
+      "_type": "pageHeroSection",
+      ${PAGE_HERO_FRAGMENT}
+    }
+  )
+`;
+```
+
+**Benefits**:
+
+- **Sanity type generation compatible** - Static templates work with Sanity's type generator
+- **Consistent pattern** - All reusable section fragments follow the same structure
+- **Clear logic** - Easy to understand the `isReusedContent` conditional logic
+- **Maintainable** - Direct GROQ templates are easier to debug and modify
+
+#### `lib/sanity/queries.ts` - Sanity Query Definitions
+
+- **All GROQ queries must be defined here** - centralized query management
+- **Page queries**: headerQuery, pageQuery
+- **Domain queries**: blogPostsQuery, blogPostQuery, and other domain-specific queries
+- **Site settings**: siteSettingsQuery for SEO and organization data
+
+## Sanity Studio Icon Error Fix
+
+**CRITICAL**: When using `customIcon` in Sanity Studio schemas, avoid displaying icon names in preview media fields to prevent "String contains an invalid character" DOMException errors.
+
+**Problem**:
+
+```typescript
+// ❌ WRONG - Causes DOMException error
+preview: {
+  select: {
+    iconName: 'icon.name.name',
+  },
+  prepare({ iconName }) {
+    return {
+      media: iconName ? `Icon: ${iconName}` : undefined, // This causes the error
+    };
+  },
+}
+```
+
+**Solution**:
+
+```typescript
+// ✅ CORRECT - Avoid icon name in media field
+preview: {
+  select: {
+    title: 'title',
+    subtitle: 'description',
+  },
+  prepare({ title, subtitle }) {
+    return {
+      title: title || 'Item',
+      subtitle: subtitle || 'No description',
+      // Don't include icon name in media field
+    };
+  },
+}
+```
+
+## Sanity Studio Preview Cosmetic Rules
+
+**MANDATORY for all section previews in Sanity Studio:**
+
+### Reused Content Formatting
+
+- **ALWAYS use `(reused)` with parentheses** when content is reused
+- **NEVER use just `reused`** without parentheses
+- **Pattern**: `Section Name (reused)` not `Section Name reused`
+
+```typescript
+// ✅ CORRECT - Use parentheses
+const subtitle = `Page Section${isReusedContent ? " (reused)" : ""} • ${count} items`;
+
+// ❌ WRONG - Missing parentheses
+const subtitle = `Page Section${isReusedContent ? " reused" : ""} • ${count} items`;
+```
+
+### Preview Information Separators
+
+- **ALWAYS use `•` (bullet point) as separator** between different pieces of information
+- **NEVER use other separators** like `|`, `-`, `,`, or `:`
+- **Consistent pattern**: `Section Type (reused) • Count • Details`
+
+```typescript
+// ✅ CORRECT - Use bullet points
+const subtitle = [`Section Name${isReusedContent ? " (reused)" : ""}`, `${count} items`, details]
+  .filter(Boolean)
+  .join(" • ");
+
+// ❌ WRONG - Inconsistent separators
+const subtitle = `Section Name (reused) | ${count} items - ${details}`;
+```
+
+## GROQ Array Query Syntax
+
+**CRITICAL**: When querying arrays in GROQ fragments, use correct syntax to prevent null values.
+
+**Problem**:
+
+```typescript
+// ❌ WRONG - Malformed array syntax causes null values
+"items": coalesce(items[], []) {
+  "id": _key,
+  "title": coalesce(title, "")
+}
+```
+
+**Solution**:
+
+```typescript
+// ✅ CORRECT - Proper array query syntax
+"items": coalesce(items[] {
+  "id": _key,
+  "title": coalesce(title, "")
+}, [])
+```
+
+**Key Rules**:
+
+- **Array query syntax**: `fieldName[] { ... }` not `fieldName[], [] { ... }`
+- **With coalesce**: `coalesce(fieldName[] { ... }, [])` provides fallback empty array
+- **Always test**: Verify array queries return expected data structure, not null
+
+## Sanity Studio Translation Utilities
+
+### `languageField` and `buildLanguageSubtitlePreview()`
+
+Utilities for handling document internationalization in Sanity Studio.
+
+#### Language Field
+
+The `languageField` utility provides a standardized field for document translations. This field must be included in all document types that use Sanity's document internationalization plugin.
+
+**Field Definition** (`base/utils.ts`):
+
+```typescript
+export const languageField = defineField({
+  name: 'language',
+  type: 'string',
+  readOnly: true,
+  hidden: true,
+});
+```
+
+The field is `readOnly` and `hidden` because the internationalization plugin automatically manages its value. Content creators don't need to manually change the language of a document.
+
+#### Language Preview Utility
+
+The `buildLanguageSubtitlePreview()` function generates a visual indicator (flag + code) for use in document previews:
+
+```typescript
+export function buildLanguageSubtitlePreview(language?: string): string {
+  const flagByLang: Record<string, string> = {
+    it: '🇮🇹',
+    en: '🇬🇧',
+    de: '🇩🇪',
+  };
+  if (!language) return 'Language not set';
+  const code = language.toUpperCase();
+  const flag = flagByLang[language] || '🏳️';
+  return `${flag} ${code}`;
+}
+```
+
+#### Usage Pattern
+
+**1. Import the utilities**:
+
+```typescript
+import { languageField, buildLanguageSubtitlePreview } from '@/base/utils';
+```
+
+**2. Add `languageField` to document fields**:
+
+```typescript
+// For regular documents
+export const header = defineType({
+  name: 'header',
+  title: 'Header',
+  type: 'document',
+  fields: [
+    languageField, // Always first field
+    // ... other fields
+  ],
+});
+
+// For reusable section documents
+const pageHeroDocumentFields = [languageField, ...pageHeroSectionFields];
+
+export const pageHeroDocumentType = defineType({
+  name: 'pageHero',
+  title: 'Page Hero',
+  type: 'document',
+  fields: pageHeroDocumentFields,
+});
+```
+
+**3. Use in preview to show language**:
+
+```typescript
+// Simple preview with language only
+preview: {
+  select: {
+    title: 'title',
+    language: 'language',
+  },
+  prepare({ title, language }: { title?: string; language?: string }) {
+    return {
+      title: title || 'Page',
+      subtitle: buildLanguageSubtitlePreview(language),
+    };
+  },
+}
+
+// Complex preview with multiple subtitle parts
+preview: {
+  select: {
+    title: 'internalTitle',
+    subtitle: 'title',
+    language: 'language',
+  },
+  prepare({ title, subtitle, language }) {
+    return {
+      title: title || 'Footer',
+      subtitle: `${buildLanguageSubtitlePreview(language)}${subtitle ? ` • ${subtitle}` : ''}`,
+    };
+  },
+}
+```
+
+#### Key Points
+
+- **Always add `languageField` first** in the document fields array for consistency
+- **Use `buildLanguageSubtitlePreview(language)`** in previews to show visual language indicators
+- **Combine with other preview data** using the bullet separator `•` for consistency
+- The plugin handles language value updates automatically - no manual intervention needed
+---
+alwaysApply: true
+---

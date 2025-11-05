@@ -1,30 +1,46 @@
 import { HeartHandshake } from "lucide-react";
-import { Badge } from "./retroui/Badge";
-import TestimonialCard from "./TestimonialCard";
-import { Button } from "./retroui/Button";
+import { Badge } from "@/components/retroui/Badge";
+import TestimonialCard from "@/components/TestimonialCard";
+import { Button } from "@/components/retroui/Button";
+import { cn } from "@/lib/utils";
 
-export default function Testimonials() {
+export function Testimonials() {
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-20">
-          <Badge className="font-semibold mb-12 inline-flex items-center gap-2 bg-red-400 text-white">
-            <HeartHandshake size={16} className="text-white" /> Wall of Love
+    <section className={cn("px-4", "py-20")}> 
+      <div className={cn("mx-auto max-w-6xl")}> 
+        <div className={cn("mb-20 text-center")}> 
+          <Badge
+            className={cn(
+              "mb-12 inline-flex items-center gap-2 font-semibold",
+              "bg-red-400 text-white"
+            )}
+          >
+            <HeartHandshake size={16} className={cn("text-white")} /> Wall of Love
           </Badge>
-          <h2 className="font-head text-3xl lg:text-4xl font-semibold mb-4">
+          <h2 className={cn("mb-4 font-head font-semibold", "text-3xl lg:text-4xl")}>
             Trusted by{" "}
-            <span className="bg-primary px-3 border-2 border-black inline-block transform -rotate-1">
+            <span
+              className={cn(
+                "inline-block -rotate-1 transform",
+                "border-2 border-black bg-primary px-3"
+              )}
+            >
               partners
             </span>
           </h2>
-          <p className="font-sans text-lg font-medium text-muted-foreground max-w-2xl mx-auto">
+          <p
+            className={cn(
+              "mx-auto max-w-2xl font-sans text-lg font-medium",
+              "text-muted-foreground"
+            )}
+          >
             Don't just take our word for it. Hear what our customers have to say
             about their experience.
           </p>
         </div>
 
         {/* Featured testimonial */}
-        <div className="mb-16">
+        <div className={cn("mb-16")}> 
           <TestimonialCard
             size="featured"
             variant="primary"
@@ -40,7 +56,7 @@ export default function Testimonials() {
         </div>
 
         {/* Additional testimonials grid */}
-        <div className="grid md:grid-cols-1 gap-8 mb-16">
+        <div className={cn("mb-16 grid gap-8", "md:grid-cols-1")}> 
           <TestimonialCard
             size="compact"
             variant="white"
@@ -54,7 +70,7 @@ export default function Testimonials() {
           />
         </div>
 
-        <div className="mt-16 mx-auto text-center">
+        <div className={cn("mx-auto mt-16 text-center")}> 
           <Button size="lg" variant="secondary">
             Read More Stories →
           </Button>
@@ -63,3 +79,5 @@ export default function Testimonials() {
     </section>
   );
 }
+
+

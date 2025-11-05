@@ -1,9 +1,9 @@
 import { Button } from "@/components/retroui/Button";
-import Hero from "@/components/Hero";
-import TrustedByMarquee from "@/components/TrustedByMarquee";
-import ServicesSection from "@/components/ServicesSection";
-import OurServicesSection from "@/components/OurServicesSection";
-import Testimonials from "@/components/Testimonials";
+import { Hero } from "@/components/sections/hero";
+import { TrustedByMarquee } from "@/components/sections/trusted-by-marquee";
+import { ServicesSection } from "@/components/sections/services-section";
+import { OurServicesSection } from "@/components/sections/our-services-section";
+import { Testimonials } from "@/components/sections/testimonials";
 
 export default function Home() {
   return (

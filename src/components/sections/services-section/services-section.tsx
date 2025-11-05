@@ -1,5 +1,5 @@
-import Star4 from "./stars/star-4";
-import { CheckIcon, GemIcon, GlobeIcon, StarIcon, ZapIcon } from "lucide-react";
+import Star4 from "@/components/stars/star-4";
+import { CheckIcon, GemIcon, StarIcon, ZapIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
@@ -20,26 +20,25 @@ function ServiceCard({
   return (
     <div
       className={cn(
-        "border-2 border-black p-4 sm:p-6 shadow-lg rounded",
-        "hover:scale-105 hover:translate-y-2 transition-all duration-75",
+        "rounded border-2 border-black p-4 sm:p-6 shadow-lg",
+        "transition-all duration-75 hover:translate-y-2 hover:scale-105",
         className
       )}
     >
-      <div className="text-black">
-        <div className="flex items-center gap-2 mb-2">
+      <div className={cn("text-black")}> 
+        <div className={cn("mb-2", "flex items-center gap-2")}>
           <span
             className={cn(
-              "grid h-6 w-6 place-items-center rounded-full border-2 border-black bg-white",
+              "grid h-6 w-6 place-items-center rounded-full",
+              "border-2 border-black bg-white",
               iconWrapperClassName
             )}
           >
             {icon}
           </span>
-          <h4 className="font-head text-lg lg:text-xl font-medium">{title}</h4>
+          <h4 className={cn("font-head font-medium", "text-lg lg:text-xl")}>{title}</h4>
         </div>
-        <p className="font-sans text-base leading-relaxed font-medium">
-          {description}
-        </p>
+        <p className={cn("font-sans text-base font-medium leading-relaxed")}>{description}</p>
       </div>
     </div>
   );
@@ -52,68 +51,79 @@ function ServicesCards() {
         icon={<ZapIcon size={16} />}
         title="Ship fast"
         description="On-demand experts to accelerate your roadmap."
-        className="max-w-md bg-white w-full animate-jump-in duration-200"
-        iconWrapperClassName="bg-[#C4FF83]"
+        className={cn("w-full max-w-md animate-jump-in bg-white", "duration-200")}
+        iconWrapperClassName={cn("bg-[#C4FF83]")}
       />
 
       <ServiceCard
         icon={<GemIcon size={16} />}
         title="Quality first"
         description="Senior engineers with a product mindset."
-        className="bg-[#C4FF83] shadow-xl w-full -mt-2 ml-4"
+        className={cn("w-full -mt-2 ml-4 bg-[#C4FF83] shadow-xl")}
       />
 
       <ServiceCard
         icon={<StarIcon size={16} />}
         title="Great value"
         description="Transparent pricing tailored to your needs."
-        className="bg-[#FED13B] shadow-xl w-full ml-8 -mt-2"
+        className={cn("w-full ml-8 -mt-2 bg-[#FED13B] shadow-xl")}
       />
     </div>
   );
 }
 
-export default function ServicesSection() {
+export function ServicesSection() {
   return (
-    <section className="px-4 lg:px-8">
+    <section className={cn("px-4", "lg:px-8")}> 
       <div
         className={cn(
-          "container mx-auto max-w-8xl my-12 lg:my-20",
-          "shadow-lg rounded-lg",
-          "bg-[#6051e4] py-14 lg:py-20 relative overflow-hidden"
+          "container mx-auto my-12 max-w-8xl lg:my-20",
+          "relative overflow-hidden rounded-lg shadow-lg",
+          "bg-[#6051e4] py-14 lg:py-20"
         )}
       >
         {/* Decorative asterisk (uses public/next.svg as a placeholder accent) */}
         <Star4
-          className="text-white absolute top-6 left-4"
+          className={cn("absolute top-6 left-4", "text-white")}
           stroke="#000"
           color="#FFF500"
           strokeWidth={4}
           size={132}
         />
 
-        <div className="max-w-6xl mx-auto px-4 relative">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start lg:items-center">
+        <div className={cn("relative mx-auto max-w-6xl px-4")}> 
+          <div
+            className={cn(
+              "flex items-start gap-12 lg:items-center lg:gap-20",
+              "flex-col lg:flex-row"
+            )}
+          >
             {/* Copy */}
-            <div className="text-white flex-1 min-w-0">
-              <h2 className="font-head text-3xl lg:text-4xl font-semibold mb-4 drop-shadow-[4px_4px_0_black]">
+            <div className={cn("min-w-0 flex-1 text-white")}> 
+              <h2
+                className={cn(
+                  "mb-4 drop-shadow-[4px_4px_0_black]",
+                  "font-head font-semibold",
+                  "text-3xl lg:text-4xl"
+                )}
+              >
                 Flexible, affordable, and innovative services on demand.
               </h2>
-              <p className="font-sans text-base lg:text-lg text-gray-100/90 font-medium leading-relaxed">
+              <p className={cn("font-sans text-base font-medium leading-relaxed", "text-gray-100/90")}>
                 Dedicated to startups and scaleups.
               </p>
 
-              <div className="mt-8 lg:mt-10 max-w-xl">
-                <p className="font-sans text-semibold lg:text-lg text-white font-medium leading-relaxed">
+              <div className={cn("mt-8 max-w-xl lg:mt-10")}> 
+                <p className={cn("font-sans font-medium leading-relaxed", "text-white", "lg:text-lg")}> 
                   If you are looking to scale your team quickly or ship a
                   feature, let's talk!
                 </p>
 
-                <p className="mt-4 font-sans text-base text-gray-100/90 font-medium">
+                <p className={cn("mt-4 font-sans text-base font-medium", "text-gray-100/90")}> 
                   We are offering:
                 </p>
 
-                <ul className="mt-3 space-y-3">
+                <ul className={cn("mt-3 space-y-3")}> 
                   <BulletItem>Europe-based talent pool</BulletItem>
                   <BulletItem>Solid value for money</BulletItem>
                   <BulletItem>Flexible contracts</BulletItem>
@@ -122,7 +132,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Right stack of cards */}
-            <div className="flex-1 w-full lg:w-auto">
+            <div className={cn("w-full flex-1 lg:w-auto")}> 
               <ServicesCards />
             </div>
           </div>
@@ -149,8 +159,8 @@ function BulletItem({
     <li className={cn("flex items-center gap-3", className)}>
       <span
         className={cn(
-          "inline-grid place-items-center h-6 w-6 shrink-0 rounded-full",
-          "bg-[#C4FF83] text-black border-2 border-black shadow-sm",
+          "inline-grid h-6 w-6 shrink-0 place-items-center rounded-full",
+          "border-2 border-black bg-[#C4FF83] text-black shadow-sm",
           iconWrapperClassName
         )}
       >
@@ -158,7 +168,9 @@ function BulletItem({
       </span>
       <span
         className={cn(
-          "font-sans text-base lg:text-lg text-white/95 font-semibold leading-snug",
+          "font-sans font-semibold leading-snug",
+          "text-white/95",
+          "text-base lg:text-lg",
           textClassName
         )}
       >
@@ -167,3 +179,5 @@ function BulletItem({
     </li>
   );
 }
+
+
