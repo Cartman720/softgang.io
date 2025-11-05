@@ -1,3 +1,1 @@
-export * from "./trusted-by-marquee";
-
-
+export * from './trusted-by-marquee';

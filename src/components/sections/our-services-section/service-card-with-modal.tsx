@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { XIcon } from "lucide-react";
-import * as Dialog from "@radix-ui/react-dialog";
-import { motion, AnimatePresence } from "framer-motion";
-import BentoCard, { BentoCardProps } from "./bento-card";
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
+import { XIcon } from 'lucide-react';
+import * as Dialog from '@radix-ui/react-dialog';
+import { motion, AnimatePresence } from 'framer-motion';
+import BentoCard, { BentoCardProps } from './bento-card';
 
-interface ServiceCardWithModalProps extends Omit<BentoCardProps, "children"> {
+interface ServiceCardWithModalProps extends Omit<BentoCardProps, 'children'> {
   children: React.ReactNode;
 }
 
@@ -18,17 +18,17 @@ export default function ServiceCardWithModal({
   children,
   className,
 }: ServiceCardWithModalProps) {
-  const layoutKey = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const layoutKey = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   const [open, setOpen] = useState(false);
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button type="button" className="text-left w-full h-full">
+        <button type="button" className="h-full w-full text-left">
           <BentoCard
             title={title}
             subtitle={subtitle}
             icon={icon}
-            className={cn(className, open ? "invisible" : "")}
+            className={cn(className, open ? 'invisible' : '')}
             layoutId={layoutKey}
           />
         </button>
@@ -42,7 +42,7 @@ export default function ServiceCardWithModal({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="fixed inset-0 bg-black/40 z-40"
+                className="fixed inset-0 z-40 bg-black/40"
               />
             </Dialog.Overlay>
             <Dialog.Content asChild forceMount>
@@ -51,7 +51,7 @@ export default function ServiceCardWithModal({
                 subtitle={subtitle}
                 icon={icon}
                 className={cn(
-                  "fixed inset-0 z-50 m-auto w-[92vw] max-w-2xl max-h-[80vh] overflow-auto cursor-default",
+                  'fixed inset-0 z-50 m-auto max-h-[80vh] w-[92vw] max-w-2xl cursor-default overflow-auto',
                   className
                 )}
                 layoutId={layoutKey}
@@ -60,10 +60,10 @@ export default function ServiceCardWithModal({
                 <Dialog.Close asChild>
                   <button
                     type="button"
-                    className="absolute top-3 right-3 inline-grid place-items-center h-9 w-9 border-2 border-black bg-white shadow hover:translate-y-0.5 active:translate-y-1 transition"
+                    className="absolute top-3 right-3 inline-grid h-9 w-9 place-items-center border-2 border-black bg-white shadow transition hover:translate-y-0.5 active:translate-y-1"
                     aria-label="Close"
                   >
-                    <XIcon className="w-5 h-5" />
+                    <XIcon className="h-5 w-5" />
                   </button>
                 </Dialog.Close>
                 <div className="text-sm leading-relaxed font-medium">

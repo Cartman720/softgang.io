@@ -1,9 +1,9 @@
-import { Button } from "@/components/retroui/Button";
-import { Hero } from "@/components/sections/hero";
-import { TrustedByMarquee } from "@/components/sections/trusted-by-marquee";
-import { ServicesSection } from "@/components/sections/services-section";
-import { OurServicesSection } from "@/components/sections/our-services-section";
-import { Testimonials } from "@/components/sections/testimonials";
+import { Button } from '@/components/retroui/Button';
+import { Hero } from '@/components/sections/hero';
+import { TrustedByMarquee } from '@/components/sections/trusted-by-marquee';
+import { ServicesSection } from '@/components/sections/services-section';
+import { OurServicesSection } from '@/components/sections/our-services-section';
+import { Testimonials } from '@/components/sections/testimonials';
 
 export default function Home() {
   return (
@@ -11,18 +11,18 @@ export default function Home() {
       className="bg-[#d6f3ca] pb-20"
       style={{
         backgroundImage: "url('/grid.svg')",
-        backgroundRepeat: "repeat",
-        backgroundAttachment: "fixed",
+        backgroundRepeat: 'repeat',
+        backgroundAttachment: 'fixed',
       }}
     >
       <header className="py-6">
-        <div className="container max-w-8xl mx-auto flex items-center justify-between">
+        <div className="max-w-8xl container mx-auto flex items-center justify-between">
           <div className="p-2">
-            <div className="font-modak text-5xl p-1">SoftGang</div>
+            <div className="font-modak p-1 text-5xl">SoftGang</div>
           </div>
 
           <nav className="ml-auto">
-            <div className="px-4 lg:px-6 py-4">
+            <div className="px-4 py-4 lg:px-6">
               <div className="flex items-center justify-center gap-4">
                 <Button>Services</Button>
                 <Button variant="secondary">Let's Start</Button>

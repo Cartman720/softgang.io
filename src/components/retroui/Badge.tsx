@@ -1,24 +1,24 @@
-import { cn } from "@/lib/utils";
-import { cva, VariantProps } from "class-variance-authority";
-import React, { HTMLAttributes } from "react";
+import { cn } from '@/lib/utils';
+import { cva, VariantProps } from 'class-variance-authority';
+import React, { HTMLAttributes } from 'react';
 
-const badgeVariants = cva("font-semibold rounded-lg", {
+const badgeVariants = cva('font-semibold rounded-lg', {
   variants: {
     variant: {
-      default: "bg-muted text-muted-foreground",
-      outline: "outline-2 outline-foreground text-foreground",
-      solid: "bg-foreground text-background",
-      surface: "outline-2 bg-primary text-primary-foreground",
+      default: 'bg-muted text-muted-foreground',
+      outline: 'outline-2 outline-foreground text-foreground',
+      solid: 'bg-foreground text-background',
+      surface: 'outline-2 bg-primary text-primary-foreground',
     },
     size: {
-      sm: "px-2 py-1 text-xs",
-      md: "px-2 py-1 text-sm",
-      lg: "px-2 py-1 text-base",
+      sm: 'px-2 py-1 text-xs',
+      md: 'px-2 py-1 text-sm',
+      lg: 'px-2 py-1 text-base',
     },
   },
   defaultVariants: {
-    variant: "default",
-    size: "md",
+    variant: 'default',
+    size: 'md',
   },
 });
 
@@ -28,9 +28,9 @@ interface ButtonProps
 
 export function Badge({
   children,
-  size = "md",
-  variant = "default",
-  className = "",
+  size = 'md',
+  variant = 'default',
+  className = '',
   ...props
 }: ButtonProps) {
   return (

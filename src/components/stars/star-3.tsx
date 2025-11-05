@@ -27,7 +27,7 @@ export default function Star6({
       {...props}
     >
       <path
-        fill={color ?? "currentColor"}
+        fill={color ?? 'currentColor'}
         stroke={stroke}
         strokeWidth={strokeWidth}
         className={pathClassName}
