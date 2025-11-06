@@ -1,0 +1,42 @@
+{
+  "logos": [
+    {
+      "src": "/images/logos/bevy-logo.svg",
+      "alt": "Bevi Express Logo",
+      "link": "https://www.bevy-express.com/"
+    },
+    {
+      "src": "/images/logos/cottonbee-logo.svg",
+      "alt": "Cottonbee Logo",
+      "link": "https://ctnbee.com/en"
+    },
+    {
+      "src": "/images/logos/kino-mural-logo.png",
+      "alt": "Kino Mural Logo",
+      "link": "https://mindfulnessassociation.org.pl/"
+    },
+    {
+      "src": "/images/logos/savicase-logo.jpg",
+      "alt": "SaviCase logo",
+      "link": "https://savicase.de/"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "We have been using the outsourcing services for over a year now. Their flexibility and value for money is exactly what we need and what they provide. The whole process, from establishing the partnership, through securing the right candidates and adjusting our needs on the go has been really smooth. They are a solid business partner.",
+      "name": "Federica Lettieri",
+      "title": "Co-Founder & CEO @ Bevi Express",
+      "logoSrc": "/images/logos/bevy-logo.svg",
+      "link": "",
+      "variant": "dark"
+    },
+    {
+      "quote": "We have teamed up with a software gang as we did not know what path to pick in our future product development. We started with consulting, went through a technical and business audit, got a super solid report and ideas on how our future architecture should be, and what tech stack is the ideal choice. Very proactive team, big experience and vast technical & business knowledge.",
+      "name": "Michał Laskowski",
+      "title": "Co-Founder & CEO @ Cottonbee",
+      "logoSrc": "/images/logos/cottonbee-logo.svg",
+      "link": "",
+      "variant": "light"
+    }
+  ]
+}

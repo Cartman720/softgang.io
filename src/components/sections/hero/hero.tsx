@@ -37,8 +37,8 @@ export function Hero() {
         />
         <Star3
           className={cn(
-            'absolute bottom-6 left-1/3 -translate-x-1/2 rotate-45',
-            'text-foreground'
+            'absolute bottom-32 left-1/4 -translate-x-1/2 rotate-45',
+            'text-indigo-light'
           )}
           stroke="#000"
           strokeWidth={6}
@@ -46,7 +46,7 @@ export function Hero() {
         />
       </div>
       <div className={cn('px-4', 'lg:px-8')}>
-        <div className={cn('max-w-8xl container mx-auto', 'py-10 lg:py-16')}>
+        <div className={cn('max-w-8xl container mx-auto', 'pt-16 lg:pt-32 pb-32')}>
           <div className={cn('mx-auto max-w-4xl', 'p-6 sm:p-8 lg:p-12')}>
             <div className={cn('max-w-5xl', 'flex flex-col items-center')}>
               <h1
