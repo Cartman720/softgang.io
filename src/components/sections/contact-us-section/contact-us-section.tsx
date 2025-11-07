@@ -18,11 +18,12 @@ export async function ContactUsSection() {
   }, []);
 
   return (
-    <section
+    <section id="contact-us"
       className={cn(
         'relative',
         'section-padding-x',
         'mt-16 md:mt-24',
+        'scroll-mt-16 md:scroll-mt-24 xl:scroll-mt-28',
         'xl:mt-32'
       )}
     >

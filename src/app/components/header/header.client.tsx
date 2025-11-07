@@ -11,6 +11,12 @@ export function HeaderClient() {
     setIsOpen((v) => !v);
   }
 
+  function scrollToId(id: string, options?: ScrollIntoViewOptions) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start', ...options });
+  }
+
   return (
     <div>
       <div
@@ -36,8 +42,8 @@ export function HeaderClient() {
               'px-4 py-4' // Spacing
             )}
           >
-            <Button>Services</Button>
-            <Button variant="secondary">{"Let's Start"}</Button>
+            <Button onClick={() => scrollToId('our-services')}>Services</Button>
+            <Button variant="secondary" onClick={() => scrollToId('contact-us')}>{"Let's Start"}</Button>
           </div>
         </nav>
 
@@ -105,8 +111,23 @@ export function HeaderClient() {
               'pt-2' // Spacing
             )}
           >
-            <Button className={cn('w-full')}>Services</Button>
-            <Button className={cn('w-full')} variant="secondary">
+            <Button
+              className={cn('w-full')}
+              onClick={() => {
+                scrollToId('our-services');
+                setIsOpen(false);
+              }}
+            >
+              Services
+            </Button>
+            <Button
+              className={cn('w-full')}
+              variant="secondary"
+              onClick={() => {
+                scrollToId('contact-us');
+                setIsOpen(false);
+              }}
+            >
               {"Let's Start"}
             </Button>
           </div>

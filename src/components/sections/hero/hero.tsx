@@ -112,7 +112,7 @@ export function Hero({ texts = ['Software Gang'] }: HeroProps) {
                   className={cn(
                     'bg-accent', // Visual
                     'text-base', // Typography
-                    'px-2 py-0.5 sm:px-3 sm:py-1' // Mobile padding override
+                    'px-2 py-0.5 sm:px-3 sm:py-0.5' // Mobile padding override
                   )}
                 >
                   tech talent
@@ -123,7 +123,7 @@ export function Hero({ texts = ['Software Gang'] }: HeroProps) {
                   className={cn(
                     'bg-red-300', // Visual
                     'text-base', // Typography
-                    'px-2 py-0.5 sm:px-3 sm:py-1' // Mobile padding override
+                    'px-2 py-0.5 sm:px-3 sm:py-0.5' // Mobile padding override
                   )}
                 >
                   achieve its milestones

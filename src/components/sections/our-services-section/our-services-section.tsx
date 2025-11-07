@@ -50,11 +50,12 @@ export function OurServicesSection() {
     return [pick(), pick(), pick(), pick(), pick()];
   }, []);
   return (
-    <section
+    <section id="our-services"
       className={cn(
         'relative',
         'section-padding-x',
         'mt-16 md:mt-24',
+        'scroll-mt-24 md:scroll-mt-28 xl:scroll-mt-32',
         'xl:mt-32'
       )}
     >
