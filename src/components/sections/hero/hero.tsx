@@ -11,8 +11,11 @@ export function Hero() {
   return (
     <section
       className={cn(
-        'relative flex items-center justify-center',
-        'border-b border-black h-[calc(100vh-120px)]'
+        'relative flex justify-center', // Layout
+        'items-start md:items-center', // Responsive alignment
+        'border-b border-black', // Divider
+        'section-padding-x', // Horizontal padding utility
+        'min-h-[calc(100vh-120px)] md:h-[calc(100vh-120px)]' // Height
       )}
     >
       {/* Decorative neo-brutalist stars */}
@@ -21,7 +24,7 @@ export function Hero() {
         aria-hidden
       >
         <Star1
-          className={cn('absolute top-6 left-4', 'text-primary')}
+          className={cn('absolute top-6 left-4', 'text-primary', 'hidden md:block')}
           stroke="#000"
           strokeWidth={6}
           size={64}
@@ -29,7 +32,8 @@ export function Hero() {
         <Star2
           className={cn(
             'absolute top-1/2 right-6 -translate-y-1/2 rotate-12',
-            'text-secondary'
+            'text-secondary',
+            'hidden sm:block'
           )}
           stroke="#000"
           strokeWidth={6}
@@ -38,7 +42,8 @@ export function Hero() {
         <Star3
           className={cn(
             'absolute bottom-32 left-1/4 -translate-x-1/2 rotate-45',
-            'text-indigo-light'
+            'text-indigo-light',
+            'hidden sm:block'
           )}
           stroke="#000"
           strokeWidth={6}
@@ -53,7 +58,7 @@ export function Hero() {
                 className={cn(
                   'relative text-center',
                   'font-head leading-tight font-bold text-black',
-                  'text-5xl sm:text-6xl lg:text-7xl'
+                  'text-4xl sm:text-6xl lg:text-7xl'
                 )}
               >
                 <span>We are the </span>
@@ -70,7 +75,7 @@ export function Hero() {
 
                 <Star2
                   size={64}
-                  className={cn('absolute top-0 right-0', 'text-destructive')}
+                  className={cn('absolute top-0 right-0', 'text-destructive', 'hidden sm:block')}
                   stroke="#000"
                   strokeWidth={3}
                 />
@@ -85,14 +90,22 @@ export function Hero() {
                 We outsource{' '}
                 <Badge
                   variant="surface"
-                  className={cn('bg-accent', 'text-base')}
+                  className={cn(
+                    'bg-accent', // Visual
+                    'text-base', // Typography
+                    'px-2 py-0.5 sm:px-3 sm:py-1' // Mobile padding override
+                  )}
                 >
                   tech talent
                 </Badge>{' '}
                 and build software the smart way to help your company{' '}
                 <Badge
                   variant="surface"
-                  className={cn('bg-red-300', 'text-base')}
+                  className={cn(
+                    'bg-red-300', // Visual
+                    'text-base', // Typography
+                    'px-2 py-0.5 sm:px-3 sm:py-1' // Mobile padding override
+                  )}
                 >
                   achieve its milestones
                 </Badge>
@@ -100,7 +113,7 @@ export function Hero() {
 
               <div
                 className={cn(
-                  'mt-20',
+                  'mt-10 sm:mt-16 lg:mt-20',
                   'flex flex-col gap-3',
                   'sm:flex-row sm:items-center sm:gap-4'
                 )}
@@ -134,17 +147,17 @@ export function Hero() {
 
           <div
             className={cn(
-              'mt-10 flex items-center justify-center gap-2 text-xs text-black/80',
+              'mt-10 flex items-center flex-col md:flex-row justify-center gap-2 text-xs text-black/80',
               'sm:mt-16',
               'animate-pulse'
             )}
           >
-            <span className={cn('hidden sm:inline')}>Scroll to explore</span>
+            <span className={cn('block md:inline')}>Scroll to explore</span>
             <span
               className={cn(
                 'grid h-6 w-6 place-items-center',
                 'border-2 border-black bg-white shadow',
-                'animate-bounce'
+                'animate-bounce rounded-md'
               )}
             >
               ↓

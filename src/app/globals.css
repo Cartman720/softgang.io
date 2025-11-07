@@ -91,7 +91,7 @@
 
 /* Utilities: shared container and horizontal section padding */
 :root {
-  --spacing-mobile: 24px;
+  --spacing-mobile: 16px;
   --spacing-tablet: 40px;
   --spacing-desktop: 106px;
 }

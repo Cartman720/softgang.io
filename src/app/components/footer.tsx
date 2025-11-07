@@ -15,20 +15,22 @@ export function Footer() {
       <div>
         <div
           className={cn(
-            'flex items-center justify-between', // Layout
-            'gap-4', // Spacing
+            'flex items-center', // Layout
+            'justify-center md:justify-between', // Responsive alignment
+            'gap-4 md:gap-6', // Spacing
             'text-sm', // Typography
-            'flex-col md:flex-row' // Responsive
+            'flex-col md:flex-row', // Responsive
+            'text-center md:text-left' // Text alignment
           )}
         >
           <div
             className={cn(
-              'flex items-center', // Layout
-              'gap-3' // Spacing
+              'flex items-center flex-col md:flex-row', // Layout
+              'gap-2 md:gap-3' // Spacing
             )}
           >
-            <div className="p-2">
-              <div className="font-modak text-black p-1 text-3xl">SoftGang</div>
+            <div className="sm:p-2">
+              <div className="font-modak text-black p-1 text-2xl md:text-3xl">SoftGang</div>
             </div>
             <span className={cn('whitespace-nowrap text-black')}>
               © {year} Softgang. All rights reserved.
@@ -37,8 +39,8 @@ export function Footer() {
 
           <nav
             className={cn(
-              'flex items-center', // Layout
-              'gap-6' // Spacing
+              'flex items-center flex-wrap justify-center', // Layout
+              'gap-4 md:gap-6 flex-col md:flex-row' // Spacing
             )}
             aria-label="Footer"
           >

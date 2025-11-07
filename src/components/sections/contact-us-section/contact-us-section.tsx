@@ -18,7 +18,7 @@ export async function ContactUsSection() {
   }, []);
 
   return (
-    <section className={cn('relative', 'px-4', 'py-20')}>
+    <section className={cn('relative', 'px-4', 'my-16 md:my-20')}>
       <div
         className={cn(
           'max-w-8xl container mx-auto',

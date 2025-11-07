@@ -32,14 +32,19 @@ function Bullet({ children }: { children: React.ReactNode }) {
 
 export function OurServicesSection() {
   return (
-    <section className={cn('relative', 'px-4')}>
+    <section className={cn('relative', 'px-4', 'my-16 md:my-20')}>
       <LayoutGroup id="our-services">
         <div
           className={cn(
             'max-w-8xl container mx-auto',
             'rounded-lg border-4 border-black bg-white',
-            'px-4 py-20'
+            'px-4 py-6 md:py-20'
           )}
+          style={{
+            backgroundImage: "url('/grid.svg')",
+            backgroundRepeat: 'repeat',
+            backgroundAttachment: 'fixed',
+          }}
         >
           <div className={cn('mx-auto max-w-6xl')}>
             <div className={cn('mb-6')}>

@@ -19,7 +19,7 @@ export function HeaderClient() {
           'gap-4' // Spacing
         )}
       >
-        <div className="p-2">
+        <div className="sm:p-2">
           <div className="font-modak p-1 text-4xl md:text-5xl">SoftGang</div>
         </div>
 

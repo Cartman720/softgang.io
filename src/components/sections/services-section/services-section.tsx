@@ -56,8 +56,9 @@ function ServicesCards() {
         title="Ship fast"
         description="On-demand experts to accelerate your roadmap."
         className={cn(
-          'animate-jump-in w-full max-w-md bg-white',
-          'duration-200'
+          'w-full bg-white',
+          'md:max-w-md',
+          'animate-jump-in duration-200'
         )}
         iconWrapperClassName={cn('bg-[#C4FF83]')}
       />
@@ -66,14 +67,22 @@ function ServicesCards() {
         icon={<GemIcon size={16} />}
         title="Quality first"
         description="Senior engineers with a product mindset."
-        className={cn('-mt-2 ml-4 w-full bg-[#C4FF83] shadow-xl')}
+        className={cn(
+          'w-full bg-[#C4FF83] shadow-xl',
+          'mt-3',
+          'md:-mt-2 md:ml-4'
+        )}
       />
 
       <ServiceCard
         icon={<StarIcon size={16} />}
         title="Great value"
         description="Transparent pricing tailored to your needs."
-        className={cn('-mt-2 ml-8 w-full bg-[#FED13B] shadow-xl')}
+        className={cn(
+          'w-full bg-[#FED13B] shadow-xl',
+          'mt-3',
+          'md:-mt-2 md:ml-8'
+        )}
       />
     </div>
   );
@@ -81,24 +90,41 @@ function ServicesCards() {
 
 export function ServicesSection() {
   return (
-    <section className={cn('px-4', 'lg:px-8')}>
+    <section className={cn('section-padding-x')}>
       <div
         className={cn(
           'max-w-8xl container mx-auto my-12 lg:my-20',
           'relative overflow-hidden rounded-lg shadow-lg',
-          'bg-[#6051e4] py-14 lg:py-20'
+          'bg-[#6051e4] py-10 lg:py-20'
         )}
       >
         {/* Decorative asterisk (uses public/next.svg as a placeholder accent) */}
         <Star4
-          className={cn('absolute top-6 left-4', 'text-white')}
+          className={cn(
+            'absolute top-6 left-4',
+            'text-white',
+            'hidden md:block'
+          )}
           stroke="#000"
           color="#FFF500"
           strokeWidth={4}
           size={132}
         />
 
-        <div className={cn('relative mx-auto max-w-6xl px-4')}>
+        {/* Mobile decorative star (center-right) */}
+        <Star4
+          className={cn(
+            'absolute right-4 top-1/2 -translate-y-1/2',
+            'text-white',
+            'md:hidden'
+          )}
+          stroke="#000"
+          color="#FFF500"
+          strokeWidth={3}
+          size={48}
+        />
+
+        <div className={cn('relative mx-auto max-w-6xl px-4')}> 
           <div
             className={cn(
               'flex items-start gap-12 lg:items-center lg:gap-20',

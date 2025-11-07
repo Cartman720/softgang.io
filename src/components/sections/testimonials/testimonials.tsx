@@ -20,9 +20,9 @@ interface TestimonialsSectionProps {
 
 export function Testimonials({ testimonials }: TestimonialsSectionProps) {
   return (
-    <section className={cn('px-4', 'py-20')}>
+    <section className={cn('px-4', 'my-16 md:my-20')}>
       <div className={cn('mx-auto max-w-6xl')}>
-        <div className={cn('mb-20 text-center')}>
+        <div className={cn('mb-10 md:mb-20 text-center')}>
           <Badge
             className={cn(
               'mb-12 inline-flex items-center gap-2 font-semibold',
