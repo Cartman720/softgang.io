@@ -51,7 +51,7 @@ export default function ServiceCardWithModal({
                 subtitle={subtitle}
                 icon={icon}
                 className={cn(
-                  'fixed inset-0 z-50 m-auto max-h-[80vh] w-[92vw] max-w-2xl cursor-default overflow-auto',
+                  'fixed inset-0 z-50 m-auto max-h-[550px] w-[92vw] max-w-2xl cursor-default overflow-auto',
                   className
                 )}
                 layoutId={layoutKey}

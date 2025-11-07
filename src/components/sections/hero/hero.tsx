@@ -12,7 +12,7 @@ export function Hero() {
     <section
       className={cn(
         'relative flex items-center justify-center',
-        'border-b border-black'
+        'border-b border-black h-[calc(100vh-120px)]'
       )}
     >
       {/* Decorative neo-brutalist stars */}

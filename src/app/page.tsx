@@ -4,6 +4,7 @@ import { TrustedByMarquee } from '@/components/sections/trusted-by-marquee';
 import { ServicesSection } from '@/components/sections/services-section';
 import { OurServicesSection } from '@/components/sections/our-services-section';
 import { Testimonials } from '@/components/sections/testimonials';
+import { ContactUsSection } from '@/components/sections/contact-us-section';
 import homeData from './home.data.json';
 
 export default function Home() {
@@ -50,6 +51,7 @@ export default function Home() {
         <ServicesSection />
         <OurServicesSection />
         <Testimonials testimonials={testimonials} />
+        <ContactUsSection />
       </main>
     </div>
   );
