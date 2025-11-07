@@ -20,7 +20,13 @@ interface TestimonialsSectionProps {
 
 export function Testimonials({ testimonials }: TestimonialsSectionProps) {
   return (
-    <section className={cn('px-4', 'my-16 md:my-20')}>
+    <section
+      className={cn(
+        'px-4',
+        'mt-16 md:mt-24',
+        'xl:mt-32'
+      )}
+    >
       <div className={cn('mx-auto max-w-6xl')}>
         <div className={cn('mb-10 md:mb-20 text-center')}>
           <Badge
@@ -38,14 +44,14 @@ export function Testimonials({ testimonials }: TestimonialsSectionProps) {
               'text-3xl lg:text-4xl'
             )}
           >
-            Trusted by{' '}
+            Voice of{' '}
             <span
               className={cn(
-                'inline-block -rotate-1 transform',
-                'bg-primary border-2 border-black px-3'
+                'inline-block -skew-x-3 transform',
+                'bg-amber-500 text-white border-2 border-black px-3'
               )}
             >
-              partners
+              Trust
             </span>
           </h2>
           <p

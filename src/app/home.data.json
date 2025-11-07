@@ -26,6 +26,20 @@
       "link": "https://savicase.de/"
     }
   ],
+  "partners": [
+    {
+      "src": "/images/partners/atlantic-labs.png",
+      "alt": "Atlantic Labs",
+      "title": "Atlantic Labs",
+      "link": "https://atlanticlabs.de/"
+    },
+    {
+      "src": "/images/partners/food-labs.png",
+      "alt": "FoodLabs",
+      "title": "FoodLabs",
+      "link": "https://www.foodlabs.com/"
+    }
+  ],
   "testimonials": [
     {
       "quote": "We have been using the outsourcing services for over a year now. Their flexibility and value for money is exactly what we need and what they provide. The whole process, from establishing the partnership, through securing the right candidates and adjusting our needs on the go has been really smooth. They are a solid business partner.",

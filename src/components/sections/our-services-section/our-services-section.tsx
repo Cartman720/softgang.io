@@ -50,7 +50,14 @@ export function OurServicesSection() {
     return [pick(), pick(), pick(), pick(), pick()];
   }, []);
   return (
-    <section className={cn('relative', 'section-padding-x', 'my-16 md:my-20')}>
+    <section
+      className={cn(
+        'relative',
+        'section-padding-x',
+        'mt-16 md:mt-24',
+        'xl:mt-32'
+      )}
+    >
       <LayoutGroup id="our-services">
         <div
           className={cn(

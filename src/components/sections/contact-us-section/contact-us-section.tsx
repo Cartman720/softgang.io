@@ -18,7 +18,14 @@ export async function ContactUsSection() {
   }, []);
 
   return (
-    <section className={cn('relative', 'section-padding-x', 'my-16 md:my-20')}>
+    <section
+      className={cn(
+        'relative',
+        'section-padding-x',
+        'mt-16 md:mt-24',
+        'xl:mt-32'
+      )}
+    >
       <div
         className={cn(
           'max-w-8xl container mx-auto',
@@ -79,8 +86,8 @@ export async function ContactUsSection() {
               Start your{' '}
               <span
                 className={cn(
-                  'inline-block -rotate-1 transform',
-                  'bg-primary border-2 border-black px-3'
+                  'inline-block skew-x-3 transform',
+                  'bg-sky-500 text-white border-2 border-black px-3'
                 )}
               >
                 journey

@@ -90,7 +90,13 @@ function ServicesCards() {
 
 export function ServicesSection() {
   return (
-    <section className={cn('section-padding-x')}>
+    <section
+      className={cn(
+        'section-padding-x',
+        'mt-16 md:mt-24',
+        'xl:mt-32'
+      )}
+    >
       <div
         className={cn(
           'max-w-8xl container mx-auto my-12 lg:my-20',

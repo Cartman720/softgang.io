@@ -14,7 +14,6 @@ export function Hero() {
         'relative flex justify-center', // Layout
         'items-start md:items-center', // Responsive alignment
         'border-b border-black', // Divider
-        'section-padding-x', // Horizontal padding utility
         'min-h-[calc(100vh-120px)] md:h-[calc(100vh-120px)]' // Height
       )}
     >
