@@ -85,7 +85,7 @@ export function Hero({ texts = ['Software Gang'] }: HeroProps) {
                 <div>We are the</div>
                 <div
                   className={cn(
-                    'inline-block align-middle',
+                    'inline-block align-middle h-18',
                     'rounded-lg border-2 border-black',
                     'bg-primary text-primary-foreground',
                     'px-3 py-1'
