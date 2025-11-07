@@ -1,6 +1,7 @@
 import { Archivo_Black, Space_Grotesk, Modak } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
+import { Footer } from './components';
 
 const archivoBlack = Archivo_Black({
   subsets: ['latin'],
@@ -34,6 +35,7 @@ export default function RootLayout({
         className={cn(archivoBlack.variable, space.variable, modak.variable)}
       >
         {children}
+        <Footer />
       </body>
     </html>
   );

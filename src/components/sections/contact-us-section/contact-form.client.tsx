@@ -47,7 +47,7 @@ export function ContactForm({ action }: ContactFormProps) {
         <div
           className={cn(
             'rounded border-4 border-black bg-white',
-            'px-6 py-10'
+            'px-4 py-8 md:px-6 md:py-10'
           )}
         >
           <div
@@ -76,19 +76,20 @@ export function ContactForm({ action }: ContactFormProps) {
     <>
       <div
         className={cn(
-          'mx-auto mb-10 flex max-w-3xl items-center justify-center',
-          'gap-3 sm:gap-4'
+          'mx-auto mb-8 flex max-w-3xl items-center justify-center',
+          'flex-col sm:flex-row',
+          'gap-2 sm:gap-4'
         )}
         aria-label="Steps"
       >
-        <Step number={1} label="Leave your email" className={cn('bg-[#BDE0FE]')} />
+        <Step number={1} label="Leave your email" className={cn('w-full sm:w-auto', 'bg-[#BDE0FE]')} />
         <ArrowRight className={cn('hidden sm:block')} />
-        <Step number={2} label="We contact you in 24 hours" className={cn('bg-[#FFF2B2]')} />
+        <Step number={2} label="We contact you in 24 hours" className={cn('w-full sm:w-auto', 'bg-[#FFF2B2]')} />
         <ArrowRight className={cn('hidden sm:block')} />
         <Step
           number={3}
           label="Kick off journey!"
-          className={cn('bg-[#C4FF83]')}
+          className={cn('w-full sm:w-auto', 'bg-[#C4FF83]')}
           rightIcon={<PartyPopper size={16} />}
         />
       </div>
@@ -120,9 +121,9 @@ export function ContactForm({ action }: ContactFormProps) {
         aria-label="Message (optional)"
         className={cn(
           'h-24 w-full resize-none',
-          'bg-transparent',
-          'border-0 px-0 py-0',
-          'shadow-none transition focus:shadow-none focus:outline-hidden',
+          'rounded border-2 border-black bg-white',
+          'px-4 py-2',
+          'shadow-md transition focus:shadow-xs focus:outline-hidden',
           'placeholder:text-gray-500'
         )}
       />

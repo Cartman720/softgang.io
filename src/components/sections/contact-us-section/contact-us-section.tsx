@@ -24,7 +24,7 @@ export async function ContactUsSection() {
           'max-w-8xl container mx-auto',
           'relative overflow-hidden',
           'rounded-lg border-4 border-black bg-white',
-          'px-4 py-20'
+          'px-4 py-14 md:py-20'
         )}
         style={{
           backgroundImage: "url('/grid.svg')",
@@ -45,7 +45,7 @@ export async function ContactUsSection() {
           color={star2Color}
           stroke="#000000"
           strokeWidth={2}
-          className={cn('absolute', 'right-8 bottom-8', 'text-black')}
+          className={cn('absolute', 'right-8 bottom-8', 'text-black', 'hidden sm:block')}
         />
         <Star9
           size={48}
@@ -55,7 +55,8 @@ export async function ContactUsSection() {
           className={cn(
             'absolute',
             'top-1/2 right-16 -translate-y-1/2',
-            'text-black'
+            'text-black',
+            'hidden sm:block'
           )}
         />
 
