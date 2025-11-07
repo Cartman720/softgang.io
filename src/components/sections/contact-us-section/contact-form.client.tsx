@@ -58,6 +58,16 @@ export function ContactForm({ action }: ContactFormProps) {
           >
             Thanks, we are already on the way to respond!
           </div>
+          <div className={cn('mt-6')}>
+            <Button
+              type="button"
+              size="lg"
+              className={cn('w-full sm:w-auto')}
+              onClick={() => window.location.reload()}
+            >
+              Wanna send more?
+            </Button>
+          </div>
         </div>
       </div>
     );
@@ -110,9 +120,9 @@ export function ContactForm({ action }: ContactFormProps) {
         aria-label="Message (optional)"
         className={cn(
           'h-24 w-full resize-none',
-          'rounded border-2 border-black bg-white',
-          'px-4 py-2',
-          'shadow-md transition focus:shadow-xs focus:outline-hidden',
+          'bg-transparent',
+          'border-0 px-0 py-0',
+          'shadow-none transition focus:shadow-none focus:outline-hidden',
           'placeholder:text-gray-500'
         )}
       />
