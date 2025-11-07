@@ -9,6 +9,7 @@ import homeData from './home.data.json';
 import { Partners } from '@/components/sections/partners';
 
 interface HomeData {
+  heroTexts: string[];
   logos: { src: string; alt: string; link?: string }[];
   testimonials: {
     quote: string;
@@ -22,7 +23,8 @@ interface HomeData {
 }
 
 export default function Home() {
-  const { logos = [], testimonials = [], partners = [] } = homeData;
+  const { heroTexts = [], logos = [], testimonials = [], partners = [] } =
+    homeData as HomeData;
   return (
     <div
       className="bg-[#d6f3ca] pb-20"
@@ -35,7 +37,7 @@ export default function Home() {
       <Header />
 
       <main>
-        <Hero />
+        <Hero texts={heroTexts} />
         <TrustedByMarquee logos={logos} />
         <ServicesSection />
         <OurServicesSection />

@@ -5,9 +5,14 @@ import Star1 from '@/components/stars/star-1';
 import Star2 from '@/components/stars/star-2';
 import Star3 from '@/components/stars/star-3';
 import { Badge } from '@/components/retroui/Badge';
+import Typewriter from '@/components/fancy/text/typewriter';
 import { cn } from '@/lib/utils';
 
-export function Hero() {
+interface HeroProps {
+  texts?: string[];
+}
+
+export function Hero({ texts = ['Software Gang'] }: HeroProps) {
   return (
     <section
       className={cn(
@@ -23,7 +28,11 @@ export function Hero() {
         aria-hidden
       >
         <Star1
-          className={cn('absolute top-6 left-4', 'text-primary', 'hidden md:block')}
+          className={cn(
+            'absolute top-6 left-4',
+            'text-primary',
+            'hidden md:block'
+          )}
           stroke="#000"
           strokeWidth={6}
           size={64}
@@ -50,18 +59,31 @@ export function Hero() {
         />
       </div>
       <div className={cn('px-4', 'lg:px-8')}>
-        <div className={cn('max-w-8xl container mx-auto', 'pt-16 lg:pt-32 pb-32')}>
+        <div
+          className={cn('max-w-8xl container mx-auto', 'pt-16 pb-32 lg:pt-32')}
+        >
           <div className={cn('mx-auto max-w-4xl', 'p-6 sm:p-8 lg:p-12')}>
-            <div className={cn('max-w-5xl', 'flex flex-col items-center')}>
+            <div className={cn('max-w-5xl', 'relative flex flex-col items-center')}>
+              <Star2
+                size={64}
+                className={cn(
+                  'absolute top-0 right-0',
+                  'text-destructive',
+                  'hidden sm:block'
+                )}
+                stroke="#000"
+                strokeWidth={3}
+              />
+
               <h1
                 className={cn(
                   'relative text-center',
                   'font-head leading-tight font-bold text-black',
-                  'text-4xl sm:text-6xl lg:text-7xl'
+                  'text-3xl sm:text-5xl lg:text-6xl'
                 )}
               >
-                <span>We are the </span>
-                <span
+                <div>We are the</div>
+                <div
                   className={cn(
                     'inline-block align-middle',
                     'rounded-lg border-2 border-black',
@@ -69,15 +91,13 @@ export function Hero() {
                     'px-3 py-1'
                   )}
                 >
-                  Software Gang
-                </span>
-
-                <Star2
-                  size={64}
-                  className={cn('absolute top-0 right-0', 'text-destructive', 'hidden sm:block')}
-                  stroke="#000"
-                  strokeWidth={3}
-                />
+                  <Typewriter
+                    as="span"
+                    text={texts}
+                    waitTime={5000}
+                    className={cn('inline-flex')}
+                  />
+                </div>
               </h1>
 
               <p
@@ -146,7 +166,7 @@ export function Hero() {
 
           <div
             className={cn(
-              'mt-10 flex items-center flex-col md:flex-row justify-center gap-2 text-xs text-black/80',
+              'mt-10 flex flex-col items-center justify-center gap-2 text-xs text-black/80 md:flex-row',
               'sm:mt-16',
               'animate-pulse'
             )}

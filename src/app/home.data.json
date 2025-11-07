@@ -1,4 +1,11 @@
 {
+  "heroTexts": [
+    "Software Gang",
+    "ML Specialists",
+    "AI Automation",
+    "Backend Developers",
+    "Frontend Developers"
+  ],
   "logos": [
     {
       "src": "/images/logos/bevy-logo.svg",
