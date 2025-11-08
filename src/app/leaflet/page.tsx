@@ -40,7 +40,6 @@ export default function LeafletPage() {
         backgroundAttachment: 'fixed',
       }}
     >
-      {/* SoftGang logo (same style as header) */}
       <section className={cn('pt-4 md:pt-6')}>
         <div className={cn('sm:p-2')}>
           <h1
@@ -65,7 +64,13 @@ export default function LeafletPage() {
       </section>
 
       {/* Content (neo-brutalist section) */}
-      <section>
+      <section
+        style={{
+          backgroundImage: "url('/grid.svg')",
+          backgroundRepeat: 'repeat',
+          backgroundAttachment: 'fixed',
+        }}
+      >
         <div
           className={cn(
             'mx-auto w-full max-w-3xl',
@@ -126,7 +131,6 @@ export default function LeafletPage() {
               </ul>
             </div>
 
-
             {/* QR inside main container under the button */}
             <div
               className={cn(
@@ -165,14 +169,17 @@ export default function LeafletPage() {
                     key={logo.src}
                     className={cn(
                       'flex items-center justify-center',
-                      'rounded-md border-2 border-black bg-white',
+                      'rounded-md bg-white shadow shadow-black',
                       'p-2'
                     )}
                   >
                     <Image
                       src={logo.src}
                       alt={logo.alt}
-                      className={cn('w-auto object-contain', 'object-contain')}
+                      className={cn(
+                        'max-h-12 object-contain',
+                        'object-contain'
+                      )}
                       width={150}
                       height={40}
                     />
