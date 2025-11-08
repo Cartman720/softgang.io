@@ -2,6 +2,10 @@ import QRCode from 'react-qr-code';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/retroui/Button';
 import Image from 'next/image';
+import Star2 from '@/components/stars/star-2';
+import Star3 from '@/components/stars/star-3';
+import Star4 from '@/components/stars/star-4';
+import { Badge } from '@/components/retroui/Badge';
 
 export default function LeafletPage() {
   const logos = [
@@ -64,20 +68,62 @@ export default function LeafletPage() {
       </section>
 
       {/* Content (neo-brutalist section) */}
-      <section
-        style={{
-          backgroundImage: "url('/grid.svg')",
-          backgroundRepeat: 'repeat',
-          backgroundAttachment: 'fixed',
-        }}
-      >
+      <section>
         <div
           className={cn(
             'mx-auto w-full max-w-3xl',
-            'bg-indigo-light rounded-lg border-2 border-black shadow-md',
+            'relative overflow-hidden',
+            'rounded-lg border-2 bg-indigo-light border-black shadow-md',
             'px-4 py-3 md:px-6 md:py-6'
           )}
+          style={{
+            backgroundImage: "url('/grid.svg')",
+            backgroundRepeat: 'repeat',
+            backgroundAttachment: 'fixed',
+          }}
         >
+          {/* Decorative stars */}
+          <Star4
+            size={64}
+            color="#FFEA00"
+            stroke="#000000"
+            strokeWidth={3}
+            className={cn(
+              'absolute',
+              'top-4 left-4',
+              'z-10',
+              'text-black',
+              'hidden md:block'
+            )}
+            aria-hidden
+          />
+          <Star3
+            size={56}
+            color="#22C55E"
+            stroke="#000000"
+            strokeWidth={3}
+            className={cn(
+              'absolute',
+              'right-6 bottom-6',
+              'z-10',
+              'text-black',
+              'hidden sm:block'
+            )}
+            aria-hidden
+          />
+          <Star2
+            size={48}
+            color="#FF4D4F"
+            stroke="#000000"
+            strokeWidth={3}
+            className={cn(
+              'absolute',
+              'top-1/2 right-10 -translate-y-1/2',
+              'z-10',
+              'text-black'
+            )}
+            aria-hidden
+          />
           <div
             className={cn(
               'flex flex-col items-center',
@@ -123,7 +169,21 @@ export default function LeafletPage() {
                   'text-base leading-relaxed md:text-base'
                 )}
               >
-                <li>Tech Talent Outsourcing (from 40 EUR/ h)</li>
+                <li className="relative">
+                  Tech Talent Outsourcing{' '}
+                  <Badge className="bg-yellow-400 shadow shadow-black py-0.5 text-black">
+                    from 40 EUR/h
+                  </Badge>
+
+                  <Star2
+                    size={16}
+                    color="#6051e4"
+                    stroke="#000000"
+                    strokeWidth={3}
+                    className={cn('inline-block absolute -top-2 right-2', 'ml-2')}
+                    aria-hidden
+                  />
+                </li>
                 <li>Cloud Native Development</li>
                 <li>Proof of Concept Development</li>
                 <li>Intelligent Automation</li>
