@@ -59,7 +59,7 @@ export function OurServicesSection() {
         'xl:mt-32'
       )}
     >
-      <LayoutGroup id="our-services">
+      <LayoutGroup>
         <div
           className={cn(
             'max-w-8xl container mx-auto',
