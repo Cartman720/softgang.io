@@ -47,9 +47,9 @@ alwaysApply: true
 
 // ✅ CORRECT - Related classes grouped together
 <div className={cn(
-  'flex h-full flex-col items-start justify-between',  // Layout classes together
-  'py-0 pr-0 pl-4',                                    // Spacing classes together
-  'relative shrink-0'                                  // Positioning classes together
+  'flex h-full flex-col items-start justify-between',
+  'py-0 pr-0 pl-4',
+  'relative shrink-0'
 )}>
 ```
 

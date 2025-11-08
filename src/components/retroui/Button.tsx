@@ -30,13 +30,23 @@ const buttonVariants = cva(
   }
 );
 
-export interface IButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
+type ButtonOnlyProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'href'> & {
+  href?: undefined;
+};
 
-export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(
+type AnchorOnlyProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string;
+};
+
+export type IButtonProps = (
+  | ButtonOnlyProps
+  | AnchorOnlyProps
+) &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  };
+
+export const Button = React.forwardRef<any, IButtonProps>(
   (
     {
       children,
@@ -44,19 +54,40 @@ export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(
       className = '',
       variant = 'default',
       asChild = false,
+      href,
       ...props
     }: IButtonProps,
     forwardedRef
   ) => {
-    const Comp = asChild ? Slot : 'button';
+    const isLink = !asChild && typeof href === 'string' && href.length > 0;
+    const classes = cn(buttonVariants({ variant, size }), className);
+
+    if (asChild) {
+      return (
+        <Slot ref={forwardedRef} className={classes} {...(props as any)}>
+          {children}
+        </Slot>
+      );
+    }
+
+    if (isLink) {
+      const { href: _hrefIgnored, ...restAnchorProps } = props as AnchorOnlyProps;
+      return (
+        <a
+          ref={forwardedRef}
+          className={classes}
+          href={href}
+          {...restAnchorProps}
+        >
+          {children}
+        </a>
+      );
+    }
+
     return (
-      <Comp
-        ref={forwardedRef}
-        className={cn(buttonVariants({ variant, size }), className)}
-        {...props}
-      >
+      <button ref={forwardedRef} className={classes} {...(props as ButtonOnlyProps)}>
         {children}
-      </Comp>
+      </button>
     );
   }
 );
