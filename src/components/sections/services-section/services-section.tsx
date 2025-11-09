@@ -50,14 +50,14 @@ function ServiceCard({
 
 function ServicesCards() {
   return (
-    <div>
+    <>
       <ServiceCard
         icon={<ZapIcon size={16} />}
         title="Ship fast"
         description="On-demand experts to accelerate your roadmap."
         className={cn(
           'w-full bg-white',
-          'md:max-w-md',
+          'md:max-w-4xl lg:max-w-md',
           'animate-jump-in duration-200'
         )}
         iconWrapperClassName={cn('bg-[#C4FF83]')}
@@ -70,7 +70,8 @@ function ServicesCards() {
         className={cn(
           'w-full bg-[#C4FF83] shadow-xl',
           'mt-3',
-          'md:-mt-2 md:ml-4'
+          'md:max-w-4xl lg:max-w-md',
+          'lg:-mt-2 lg:ml-4'
         )}
       />
 
@@ -81,10 +82,11 @@ function ServicesCards() {
         className={cn(
           'w-full bg-[#FED13B] shadow-xl',
           'mt-3',
-          'md:-mt-2 md:ml-8'
+          'md:max-w-4xl lg:max-w-md',
+          'lg:-mt-2 lg:ml-8'
         )}
       />
-    </div>
+    </>
   );
 }
 
@@ -101,20 +103,19 @@ export function ServicesSection() {
         className={cn(
           'max-w-8xl container mx-auto my-12 lg:my-20',
           'relative overflow-hidden rounded-lg shadow-lg',
-          'bg-[#6051e4] py-10 lg:py-20'
+          'bg-indigo-light py-10 lg:py-16'
         )}
       >
         {/* Decorative asterisk (uses public/next.svg as a placeholder accent) */}
         <Star4
           className={cn(
             'absolute top-6 left-4',
-            'text-white',
+            'text-white size-12 xl:size-20 ',
             'hidden md:block'
           )}
           stroke="#000"
           color="#FFF500"
           strokeWidth={4}
-          size={132}
         />
 
         {/* Mobile decorative star (center-right) */}
@@ -133,7 +134,7 @@ export function ServicesSection() {
         <div className={cn('relative mx-auto max-w-6xl px-4')}> 
           <div
             className={cn(
-              'flex items-start gap-12 lg:items-center lg:gap-20',
+              'flex items-start gap-12 lg:items-center xl:gap-20',
               'flex-col lg:flex-row'
             )}
           >
@@ -187,7 +188,7 @@ export function ServicesSection() {
             </div>
 
             {/* Right stack of cards */}
-            <div className={cn('w-full flex-1 lg:w-auto')}>
+            <div className={cn('w-full flex-1 md:w-auto')}>
               <ServicesCards />
             </div>
           </div>

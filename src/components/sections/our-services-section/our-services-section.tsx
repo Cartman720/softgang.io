@@ -79,7 +79,7 @@ export function OurServicesSection() {
             color={star1Color}
             stroke="#000000"
             strokeWidth={2}
-            className={cn('absolute', 'top-6 left-6', 'text-black', 'hidden md:block')}
+            className={cn('absolute', 'top-6 left-6', 'text-black', 'hidden xl:block')}
             aria-hidden
           />
           <Star3
@@ -113,7 +113,7 @@ export function OurServicesSection() {
               'absolute',
               'top-10 right-24',
               'text-black',
-              'hidden md:block'
+              'hidden xl:block'
             )}
             aria-hidden
           />
@@ -143,8 +143,9 @@ export function OurServicesSection() {
             </div>
             <div
               className={cn(
-                'grid auto-rows-fr grid-cols-1 gap-6',
-                'md:grid-cols-3'
+                'grid auto-rows-fr grid-cols-1 gap-4',
+                'md:grid-cols-2 md:gap-6',
+                'xl:grid-cols-3 xl:gap-8'
               )}
             >
               {/* Tech Talent Outsourcing - wide card */}

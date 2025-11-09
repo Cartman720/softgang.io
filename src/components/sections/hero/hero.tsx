@@ -137,8 +137,8 @@ export function Hero({ texts = ['Software Gang'] }: HeroProps) {
                   'sm:flex-row sm:items-center sm:gap-4'
                 )}
               >
-                <Button variant="default">Get in touch</Button>
-                <Button variant="secondary">See services</Button>
+                <Button variant="default" href="#contact-us">Get in touch</Button>
+                <Button variant="secondary" href="#our-services">See services</Button>
               </div>
 
               {/* Static trusted-by row under hero */}
