@@ -89,25 +89,11 @@ export default function LeafletPage() {
             stroke="#000000"
             strokeWidth={3}
             className={cn(
-              'absolute',
-              'top-4 left-4',
-              'z-10',
-              'text-black',
-              'hidden md:block'
-            )}
-            aria-hidden
-          />
-          <Star3
-            size={56}
-            color="#22C55E"
-            stroke="#000000"
-            strokeWidth={3}
-            className={cn(
-              'absolute',
-              'right-6 bottom-6',
-              'z-10',
-              'text-black',
-              'hidden sm:block'
+              'absolute', // Positioning
+              'top-2 right-2 md:top-4 md:right-4', // Responsive positioning (top-right)
+              'z-10', // Z-index
+              'pointer-events-none select-none', // Interaction
+              'text-black' // Visual
             )}
             aria-hidden
           />
@@ -117,10 +103,11 @@ export default function LeafletPage() {
             stroke="#000000"
             strokeWidth={3}
             className={cn(
-              'absolute',
-              'top-1/2 right-10 -translate-y-1/2',
-              'z-10',
-              'text-black'
+              'absolute', // Positioning
+              'top-1/3 right-3 md:top-1/2 md:right-10 md:-translate-y-1/2', // Responsive positioning
+              'z-10', // Z-index
+              'pointer-events-none select-none', // Interaction
+              'text-black' // Visual
             )}
             aria-hidden
           />
@@ -171,7 +158,7 @@ export default function LeafletPage() {
               >
                 <li className="relative">
                   Tech Talent Outsourcing{' '}
-                  <Badge className="bg-yellow-400 shadow shadow-black py-0.5 text-black">
+                  <Badge className="bg-red-400 shadow shadow-black py-0 text-black">
                     from 40 EUR/h
                   </Badge>
 
@@ -195,10 +182,11 @@ export default function LeafletPage() {
             <div
               className={cn(
                 'mt-3 mb-5',
-                'rounded-md border-2 border-black bg-white p-3',
+                'relative rounded-md border-2 border-black bg-white p-3',
                 'shadow-md'
               )}
             >
+              {/* QR code corner decorations */}
               <a
                 href={scheduleUrl}
                 target="_blank"
