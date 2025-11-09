@@ -123,7 +123,7 @@ export default function LeafletPage() {
             <div className={cn('mt-1', 'w-full text-left')}>
               <div
                 className={cn(
-                  'font-sans font-bold text-sm tracking-wide',
+                  'font-sans text-sm font-bold tracking-wide',
                   'uppercase md:text-base'
                 )}
               >
@@ -145,7 +145,7 @@ export default function LeafletPage() {
             <div className={cn('mt-3 w-full text-left')}>
               <div
                 className={cn(
-                  'font-sans font-bold text-sm tracking-wide',
+                  'font-sans text-sm font-bold tracking-wide',
                   'md:text-base'
                 )}
               >
@@ -184,9 +184,9 @@ export default function LeafletPage() {
 
             {/* Logos + QR on the same row (grid continuation) */}
             <div className={cn('w-full')}>
-            <div
+              <div
                 className={cn(
-                  'font-sans font-bold mb-2 text-sm text-left tracking-wide',
+                  'mb-2 text-left font-sans text-sm font-bold tracking-wide',
                   'uppercase md:text-base'
                 )}
               >
@@ -255,6 +255,10 @@ export default function LeafletPage() {
                   </a>
                 </div>
               </div>
+            </div>
+
+            <div className="font-head text-center text-sm font-semibold">
+              https://www.softgang.io/
             </div>
           </div>
         </div>

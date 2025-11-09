@@ -92,7 +92,6 @@
 body,
 html {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
 }
 
 /* Utilities: shared container and horizontal section padding */
