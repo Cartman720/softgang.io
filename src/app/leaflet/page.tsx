@@ -30,7 +30,7 @@ export default function LeafletPage() {
     <div
       className={cn(
         // Fullscreen overlay to ensure single-screen fit even with global footer present
-        'fixed inset-0 z-50',
+        'relative z-50',
         // Layout
         'section-padding-x',
         'flex min-h-screen flex-col',
