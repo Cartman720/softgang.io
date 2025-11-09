@@ -71,10 +71,12 @@ export default function LeafletPage() {
       <section>
         <div
           className={cn(
-            'mx-auto w-full max-w-3xl',
+            'mx-auto w-full max-w-md',
+            'md:max-w-lg',
+            'lg:max-w-xl',
             'relative overflow-hidden',
-            'rounded-lg border-2 bg-indigo-light border-black shadow-md',
-            'px-4 py-3 md:px-6 md:py-6'
+            'bg-indigo-light rounded-lg border-2 border-black shadow-md',
+            'px-3 py-3 md:px-5 md:py-5'
           )}
           style={{
             backgroundImage: "url('/grid.svg')",
@@ -121,7 +123,7 @@ export default function LeafletPage() {
             <div className={cn('mt-1', 'w-full text-left')}>
               <div
                 className={cn(
-                  'font-head text-sm tracking-wide',
+                  'font-sans font-bold text-sm tracking-wide',
                   'uppercase md:text-base'
                 )}
               >
@@ -143,7 +145,7 @@ export default function LeafletPage() {
             <div className={cn('mt-3 w-full text-left')}>
               <div
                 className={cn(
-                  'font-head text-sm tracking-wide',
+                  'font-sans font-bold text-sm tracking-wide',
                   'md:text-base'
                 )}
               >
@@ -158,16 +160,18 @@ export default function LeafletPage() {
               >
                 <li className="relative">
                   Tech Talent Outsourcing{' '}
-                  <Badge className="bg-red-400 shadow shadow-black py-0 text-black">
+                  <Badge className="bg-yellow-400 py-0 text-black shadow shadow-black">
                     from 40 EUR/h
                   </Badge>
-
                   <Star2
                     size={16}
                     color="#6051e4"
                     stroke="#000000"
                     strokeWidth={3}
-                    className={cn('inline-block absolute -top-2 right-2', 'ml-2')}
+                    className={cn(
+                      'absolute -top-2 right-2 inline-block',
+                      'ml-2'
+                    )}
                     aria-hidden
                   />
                 </li>
@@ -178,61 +182,78 @@ export default function LeafletPage() {
               </ul>
             </div>
 
-            {/* QR inside main container under the button */}
+            {/* Logos + QR on the same row (grid continuation) */}
+            <div className={cn('w-full')}>
             <div
-              className={cn(
-                'mt-3 mb-5',
-                'relative rounded-md border-2 border-black bg-white p-3',
-                'shadow-md'
-              )}
-            >
-              {/* QR code corner decorations */}
-              <a
-                href={scheduleUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open scheduling link"
-              >
-                <QRCode
-                  value={scheduleUrl}
-                  style={{ height: 128, width: 128 }}
-                  viewBox="0 0 256 256"
-                />
-              </a>
-            </div>
-
-            {/* Logos section */}
-            <div>
-              <div
                 className={cn(
-                  'font-head mb-4 text-sm tracking-wide',
+                  'font-sans font-bold mb-2 text-sm text-left tracking-wide',
                   'uppercase md:text-base'
                 )}
               >
                 Trusted by:
               </div>
-              <div className={cn('grid grid-cols-2 gap-4', 'w-full')}>
-                {logosForGrid.map((logo) => (
+              <div
+                className={cn(
+                  'grid grid-cols-3 gap-3 md:gap-4',
+                  'items-stretch'
+                )}
+              >
+                {/* Logos grid (left, spans two columns) */}
+                <div className={cn('col-span-2')}>
                   <div
-                    key={logo.src}
                     className={cn(
-                      'flex items-center justify-center',
-                      'rounded-md bg-white shadow shadow-black',
-                      'p-2'
+                      'grid h-full grid-cols-2 rounded-md border-2 border-black bg-white p-2'
                     )}
+                    style={{
+                      backgroundImage: "url('/grid.svg')",
+                      backgroundRepeat: 'repeat',
+                      backgroundSize: 'contain',
+                      backgroundAttachment: 'fixed',
+                    }}
                   >
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      className={cn(
-                        'max-h-12 object-contain',
-                        'object-contain'
-                      )}
-                      width={150}
-                      height={40}
-                    />
+                    {logosForGrid.map((logo) => (
+                      <div
+                        key={logo.src}
+                        className={cn(
+                          'flex items-center justify-center',
+                          'p-1.5 md:p-2'
+                        )}
+                      >
+                        <Image
+                          src={logo.src}
+                          alt={logo.alt}
+                          className={cn('max-h-7 md:max-h-9', 'object-contain')}
+                          width={110}
+                          height={28}
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+
+                {/* QR tile (right column) */}
+                <div
+                  className={cn(
+                    'relative',
+                    'rounded-md border-2 border-black bg-white',
+                    'shadow-md',
+                    'flex items-center justify-center',
+                    'p-2.5 md:p-3'
+                  )}
+                >
+                  <a
+                    href={scheduleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open scheduling link"
+                  >
+                    <QRCode
+                      value={scheduleUrl}
+                      style={{ height: 96, width: 96 }}
+                      viewBox="0 0 256 256"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
