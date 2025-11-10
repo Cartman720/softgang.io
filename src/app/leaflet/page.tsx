@@ -6,6 +6,24 @@ import Star2 from '@/components/stars/star-2';
 import Star3 from '@/components/stars/star-3';
 import Star4 from '@/components/stars/star-4';
 import { Badge } from '@/components/retroui/Badge';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title:
+    'Software Gang — Tech Talent Outsourcing, Cloud Native & Automation',
+  description:
+    'Europe-based talent pool with solid value for money and flexible contracts. Services: Tech Talent Outsourcing (from 40 EUR/h), Cloud Native Development, Proof of Concept Development, Intelligent Automation, and Strategic & Technical Consulting.',
+  openGraph: {
+    title:
+      'Software Gang — Tech Talent Outsourcing, Cloud Native & Automation',
+    description:
+      'Europe-based talent pool with solid value for money and flexible contracts. Services: Tech Talent Outsourcing (from 40 EUR/h), Cloud Native Development, Proof of Concept Development, Intelligent Automation, and Strategic & Technical Consulting.',
+    url: 'https://www.softgang.io/leaflet',
+    siteName: 'Software Gang',
+    locale: 'en_US',
+    type: 'website',
+  },
+};
 
 export default function LeafletPage() {
   const logos = [
