@@ -1,7 +1,8 @@
 import { Archivo_Black, Space_Grotesk, Modak } from 'next/font/google';
-import './globals.css';
 import { cn } from '@/lib/utils';
 import { Footer } from './components';
+import { PostHogProvider } from './providers';
+import './globals.css';
 
 const archivoBlack = Archivo_Black({
   subsets: ['latin'],
@@ -34,7 +35,7 @@ export default function RootLayout({
       <body
         className={cn(archivoBlack.variable, space.variable, modak.variable)}
       >
-        {children}
+        <PostHogProvider>{children}</PostHogProvider>
         <Footer />
       </body>
     </html>
