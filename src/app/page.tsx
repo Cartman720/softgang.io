@@ -7,6 +7,24 @@ import { ContactUsSection } from '@/components/sections/contact-us-section';
 import { Header } from '@/app/components';
 import homeData from './home.data.json';
 import { Partners } from '@/components/sections/partners';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title:
+    'Software Gang — Tech Talent Outsourcing, Cloud Native & Automation',
+  description:
+    'Europe-based engineering with solid value for money and flexible contracts. We deliver Cloud Native Development, Proof of Concept builds, Intelligent Automation, and Strategic & Technical Consulting.',
+  openGraph: {
+    title:
+      'Software Gang — Tech Talent Outsourcing, Cloud Native & Automation',
+    description:
+      'Europe-based engineering with solid value for money and flexible contracts. We deliver Cloud Native Development, Proof of Concept builds, Intelligent Automation, and Strategic & Technical Consulting.',
+    url: 'https://www.softgang.io/',
+    siteName: 'Software Gang',
+    locale: 'en_US',
+    type: 'website',
+  },
+};
 
 interface HomeData {
   heroTexts: string[];
