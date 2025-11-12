@@ -11,7 +11,7 @@ interface TestimonialCardProps {
   className?: string;
   showAvatar?: boolean;
   logoSrc?: string;
-  variant?: 'light' | 'dark';
+  variant?: 'light' | 'dark' | 'default';
 }
 
 export function TestimonialCard({
@@ -30,7 +30,7 @@ export function TestimonialCard({
       'p-8',
       'shadow-lg transition-all',
       'hover:-translate-y-1',
-      'hover:shadow-amber-500',
+      'hover:shadow-indigo-900',
       'flex flex-col',
     ],
     {
@@ -40,6 +40,8 @@ export function TestimonialCard({
           light: 'bg-[#BDE0FE] text-slate-900',
           // Dark variant: indigo background with light foreground text
           dark: 'bg-indigo-light text-white',
+          // Default variant: white background with black text
+          default: 'bg-white text-black',
         },
       },
       defaultVariants: {

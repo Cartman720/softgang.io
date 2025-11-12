@@ -16,11 +16,11 @@ export function HeaderClient() {
       <div
         className={cn(
           'flex items-center justify-between', // Layout
-          'gap-4' // Spacing
+          'gap-4 max-w-6xl mx-auto' // Spacing
         )}
       >
         <div className="sm:p-2">
-          <div className="font-modak p-1 text-4xl md:text-5xl">SoftGang</div>
+          <a href="/" className="font-modak p-1 text-4xl md:text-5xl">SoftGang</a>
         </div>
 
         <nav
@@ -36,7 +36,12 @@ export function HeaderClient() {
               'px-4 py-4' // Spacing
             )}
           >
-            <Button href="/#our-services">Services</Button>
+            <Button variant="link" href="/#our-services">
+              Services
+            </Button>
+            <Button variant="link" href="/about">
+              About
+            </Button>
             <Button variant="secondary" href="#contact-us">
               {"Let's Start"}
             </Button>
@@ -109,9 +114,13 @@ export function HeaderClient() {
           >
             <Button
               className={cn('w-full')}
+              variant="link"
               href="/#our-services"
             >
               Services
+            </Button>
+            <Button className={cn('w-full')} variant="link" href="/about">
+              About
             </Button>
             <Button
               className={cn('w-full')}

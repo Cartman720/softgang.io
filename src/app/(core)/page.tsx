@@ -2,7 +2,6 @@ import { Hero } from '@/components/sections/hero';
 import { TrustedByMarquee } from '@/components/sections/trusted-by-marquee';
 import { ServicesSection } from '@/components/sections/services-section';
 import { OurServicesSection } from '@/components/sections/our-services-section';
-import { Testimonials } from '@/components/sections/testimonials';
 import { Partners } from '@/components/sections/partners';
 import type { Metadata } from 'next';
 import homeData from './home.data.json';
@@ -48,7 +47,6 @@ export default function Home() {
       <ServicesSection />
       <OurServicesSection />
       <Partners logos={partners} />
-      <Testimonials testimonials={testimonials} />
     </>
   );
 }

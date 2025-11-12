@@ -59,7 +59,7 @@ export default function AboutPage() {
         <div
           className={cn(
             // Slightly narrower container than other pages
-            'container mx-auto max-w-8xl',
+            'container mx-auto max-w-6xl',
             'relative overflow-hidden',
             'rounded-lg border-4 border-black bg-white',
             'px-4 py-10 md:py-14'
@@ -114,12 +114,26 @@ export default function AboutPage() {
           <div className={cn('mx-auto max-w-5xl')}>
             <h1
               className={cn(
+                // Typography
                 'font-head font-bold',
                 'text-3xl md:text-5xl',
-                'text-black'
+                // Visual
+                'text-black',
+                // Alignment
+                'text-center'
               )}
             >
-              {title}
+              <div>We are the </div>
+              <div
+                className={cn(
+                  'inline-block -skew-x-3 transform',
+                  'bg-primary text-black',
+                  'border-2 border-black',
+                  'px-3'
+                )}
+              >
+                software gang!
+              </div>
             </h1>
 
             <div

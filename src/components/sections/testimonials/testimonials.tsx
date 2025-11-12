@@ -11,7 +11,7 @@ interface TestimonialItem {
   logoSrc: string;
   link?: string;
   className?: string;
-  variant: 'light' | 'dark';
+  variant: 'light' | 'dark' | 'default';
 }
 
 interface TestimonialsSectionProps {

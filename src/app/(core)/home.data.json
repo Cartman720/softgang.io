@@ -65,6 +65,14 @@
       "logoSrc": "/images/logos/cottonbee-logo.svg",
       "link": "",
       "variant": "light"
+    },
+    {
+      "quote": "Reliable, pragmatic, and fun to work with — exactly the kind of partner you want when building something from scratch.",
+      "name": "Ann Marie Steiger",
+      "title": "Founder @ SaviCase",
+      "logoSrc": "/images/logos/savicase-logo.jpg",
+      "link": "",
+      "variant": "default"
     }
   ]
 }
