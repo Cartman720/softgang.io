@@ -64,8 +64,8 @@ export function Testimonials({ testimonials }: TestimonialsSectionProps) {
           </p>
         </div>
 
-        {/* Unified testimonials grid */}
-        <div className={cn('mb-16 grid gap-8', 'md:grid-cols-2')}>
+        {/* Unified testimonials grid - single column for full-width quotes */}
+        <div className={cn('mb-16 grid gap-8', 'grid-cols-1')}>
           {testimonials?.map((item, idx) => {
             return (
               <TestimonialCard
