@@ -1,0 +1,36 @@
+{
+  "title": "We are the software gang!",
+  "intro": [
+    "We are entrepreneurs who went through fundraising & startup building. We know from experience how difficult the path can be and how lonely the journey can feel at times. That is why we decided to help small companies & early-stage startups in the areas that were the most troublesome and cash-burning for us.",
+    "Our goal is to deliver good-quality services at reasonable prices to keep your runway going until you raise another round of financing.",
+    "We work with a network of hungry and talented software developers; we tech-screen all of them, so that we are confident in their skills.",
+    "If you are looking to scale your team, quickly ship features, optimize your software development and its costs, or just test hypotheses, let's chat!"
+  ],
+  "team": [
+    {
+      "name": "Tamara Bolsewicz",
+      "description": "Business & Operations Consigliere",
+      "imageSrc": "/images/team/tamara.png",
+      "link": "https://www.linkedin.com/in/tamara-bolsewicz/"
+    },
+    {
+      "name": "Aren Hovespyan",
+      "description": "Technology Boss",
+      "imageSrc": "/images/team/aren.png",
+      "link": "https://www.linkedin.com/in/aren-hovsepyan-pro/"
+    },
+    {
+      "name": "Adam Formanek",
+      "description": "Networking & Deeptech Mogul",
+      "imageSrc": "/images/team/adam.png",
+      "link": "https://www.linkedin.com/in/adamformanek/"
+    }
+  ],
+  "offeringsTitle": "We are offering:",
+  "offerings": [
+    "Europe-based talent pool",
+    "Solid value for money",
+    "Flexible contracts"
+  ]
+}
+

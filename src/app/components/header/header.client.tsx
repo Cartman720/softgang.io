@@ -36,7 +36,7 @@ export function HeaderClient() {
               'px-4 py-4' // Spacing
             )}
           >
-            <Button href="#our-services">Services</Button>
+            <Button href="/#our-services">Services</Button>
             <Button variant="secondary" href="#contact-us">
               {"Let's Start"}
             </Button>
@@ -109,7 +109,7 @@ export function HeaderClient() {
           >
             <Button
               className={cn('w-full')}
-              href="#our-services"
+              href="/#our-services"
             >
               Services
             </Button>

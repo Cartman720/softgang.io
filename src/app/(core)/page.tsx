@@ -3,11 +3,9 @@ import { TrustedByMarquee } from '@/components/sections/trusted-by-marquee';
 import { ServicesSection } from '@/components/sections/services-section';
 import { OurServicesSection } from '@/components/sections/our-services-section';
 import { Testimonials } from '@/components/sections/testimonials';
-import { ContactUsSection } from '@/components/sections/contact-us-section';
-import { Header } from '@/app/components';
-import homeData from './home.data.json';
 import { Partners } from '@/components/sections/partners';
 import type { Metadata } from 'next';
+import homeData from './home.data.json';
 
 export const metadata: Metadata = {
   title:
@@ -44,25 +42,15 @@ export default function Home() {
   const { heroTexts = [], logos = [], testimonials = [], partners = [] } =
     homeData as HomeData;
   return (
-    <div
-      className="bg-[#d6f3ca] pb-20"
-      style={{
-        backgroundImage: "url('/grid.svg')",
-        backgroundRepeat: 'repeat',
-        backgroundAttachment: 'fixed',
-      }}
-    >
-      <Header />
-
-      <main>
-        <Hero texts={heroTexts} />
-        <TrustedByMarquee logos={logos} />
-        <ServicesSection />
-        <OurServicesSection />
-        <Partners logos={partners} />
-        <Testimonials testimonials={testimonials} />
-        <ContactUsSection />
-      </main>
-    </div>
+    <>
+      <Hero texts={heroTexts} />
+      <TrustedByMarquee logos={logos} />
+      <ServicesSection />
+      <OurServicesSection />
+      <Partners logos={partners} />
+      <Testimonials testimonials={testimonials} />
+    </>
   );
 }
+
+
