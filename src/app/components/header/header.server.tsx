@@ -6,7 +6,7 @@ export function Header() {
     <header
       className={cn(
         'section-padding-x', // Responsive horizontal padding
-        'py-6' // Vertical spacing
+        'relative z-50 py-6' // Vertical spacing
       )}
     >
       <div
@@ -20,5 +20,3 @@ export function Header() {
     </header>
   );
 }
-
-
