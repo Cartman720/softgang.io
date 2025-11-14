@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils';
 import { cva, VariantProps } from 'class-variance-authority';
 import React, { ButtonHTMLAttributes } from 'react';
 import { Slot } from '@radix-ui/react-slot';
+import Link from 'next/link';
 
 const buttonVariants = cva(
   'font-head transition-all rounded outline-hidden cursor-pointer duration-200 font-medium inline-flex items-center justify-center',
@@ -9,11 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'shadow-md hover:shadow active:shadow-none bg-primary text-primary-foreground border-2 border-black transition hover:translate-y-1 active:translate-y-2 active:translate-x-1 hover:bg-primary-hover',
+          'shadow-md hover:shadow active:shadow-none bg-primary text-primary-foreground border-2 border-black transition hover:translate-y-1 hover:bg-primary-hover',
         secondary:
-          'shadow-md hover:shadow active:shadow-none bg-secondary shadow-foreground text-secondary-foreground border-2 border-black transition hover:translate-y-1 active:translate-y-2 active:translate-x-1 hover:bg-secondary-hover',
+          'shadow-md hover:shadow active:shadow-none bg-secondary shadow-foreground text-secondary-foreground border-2 border-black transition hover:translate-y-1 hover:bg-secondary-hover',
         outline:
-          'shadow-md hover:shadow active:shadow-none bg-transparent border-2 transition hover:translate-y-1 active:translate-y-2 active:translate-x-1',
+          'shadow-md hover:shadow active:shadow-none bg-transparent border-2 transition hover:translate-y-1',
         link: 'bg-transparent hover:underline',
       },
       size: {
@@ -61,6 +62,8 @@ export const Button = React.forwardRef<any, IButtonProps>(
   ) => {
     const isLink = !asChild && typeof href === 'string' && href.length > 0;
     const classes = cn(buttonVariants({ variant, size }), className);
+    const isInternalLink =
+      isLink && (href!.startsWith('/') || href!.startsWith('#'));
 
     if (asChild) {
       return (
@@ -72,16 +75,24 @@ export const Button = React.forwardRef<any, IButtonProps>(
 
     if (isLink) {
       const { href: _hrefIgnored, ...restAnchorProps } = props as AnchorOnlyProps;
-      return (
-        <a
-          ref={forwardedRef}
-          className={classes}
-          href={href}
-          {...restAnchorProps}
-        >
-          {children}
-        </a>
-      );
+      if (isInternalLink) {
+        return (
+          <Link href={href as string} className={classes} ref={forwardedRef as any} {...restAnchorProps}>
+            {children}
+          </Link>
+        );
+      } else {
+        return (
+          <a
+            ref={forwardedRef}
+            className={classes}
+            href={href}
+            {...restAnchorProps}
+          >
+            {children}
+          </a>
+        );
+      }
     }
 
     return (
